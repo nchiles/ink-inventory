@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vector Ink Inventory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Vector Ink Inventory</h1>
+        </div>
+    </div>
+
+    <!-- ADD INK -->
+    <div class="row addink">
+        <div class="col-sm-12">
+            <form action="/inventory" method="POST" class="form-inline">
+                <div class="form-group">
+                    <input type="text" placeholder="Add Ink" name="ink" class="form-control">
+                    <select type="text" name="location" class="form-control">
+                        <option value="Not Made"><%= locationArray[0] %></option>
+                        <option value="On Shelf"><%= locationArray[1] %></option>
+                        <option value="C2"><%= locationArray[2] %></option>
+                        <option value="C3-12"><%= locationArray[3] %></option>
+                        <option value="C3-18"><%= locationArray[4] %></option>
+                        <option value="Gauntlet"><%= locationArray[5] %></option>
+                        <option value="Gauntlet-18"><%= locationArray[6] %></option>
+                        <option value="Sportsman-10"><%= locationArray[7] %></option>
+                        <option value="Sportsman-14"><%= locationArray[8] %></option>
+                    </select>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SEARCH INKS -->
+    <div class="row searchink">
+        <div class="col-sm-12">
+            <form action="/" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Ink search..." class="form-control inksearchbox">
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- INK LIST -->
+        <table>
+            <tr>
+                <th>Ink</th>
+                <th>Location</th>
+            </tr>
+            <% ink.forEach(function(ink) { %>
+                <tr>
+                    <td class="bucket-name"><%= ink.ink %></td>
+                    <td>
+                        <form action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" >
+                            <select id="select" class="form-control" name="ink[location]" onchange="this.form.submit()"> 
+                                <option value="Not Made" <%= ink.location == 'Not Made' ? 'selected' : ''%> ><%= locationArray[0] %></option>
+                                <option value="On Shelf" <%= ink.location == 'On Shelf' ? 'selected' : ''%> ><%= locationArray[1] %></option>
+                                <option value="C2" <%= ink.location == 'C2' ? 'selected' : ''%> ><%= locationArray[2] %></option>
+                                <option value="C3-12" <%= ink.location == 'C3-12' ? 'selected' : ''%> ><%= locationArray[3] %></option>
+                                <option value="C3-18" <%= ink.location == 'C3-18' ? 'selected' : ''%> ><%= locationArray[4] %></option>
+                                <option value="Gauntlet" <%= ink.location == 'Gauntlet' ? 'selected' : ''%> ><%= locationArray[5] %></option>
+                                <option value="Gauntlet-18" <%= ink.location == 'Gauntlet-18' ? 'selected' : ''%> ><%= locationArray[6] %></option>
+                                <option value="Samples" <%= ink.location == 'Samples' ? 'selected' : ''%> ><%= locationArray[7] %></option>
+                                <option value="Sportsman-10" <%= ink.location == 'Sportsman-10' ? 'selected' : ''%> ><%= locationArray[8] %></option>
+                                <option value="Sportsman-14" <%= ink.location == 'Sportsman-14' ? 'selected' : ''%> ><%= locationArray[9] %></option>
+                            </select>
+                        </form>
+                    </td>
+                    <td><a class="btn btn-danger btn-sm" href="delete/<%= ink.id %>" role="button" >delete</a></td>
+                    <!-- <td><a onclick="return confirm('Are you sure you want to delete this ink?');" class="md-danger" href="delete/<%= ink.id %>" >delete</a></td> -->
+                </tr>
+            <% }); %>	
+        </table> 
+</div>
+<script src="main.js"></script>  
+</body>
+</html>
+
+
