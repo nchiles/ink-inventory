@@ -46,14 +46,14 @@ app.get("/", function(req, res){
     };
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     // Get all inks from DB
-    Ink.find({ink: regex}, function(err, allInks){
+    Ink.find({ink: regex}, function(err, foundInk){
       if(err){
         console.log(err);
     } else {
-        if(allInks.length < 1) {
+        if(foundInk.length < 1) {
           noMatch = "No match, please try again.";
       }
-      res.render('new-index', {ink: allInks, locationArray: locationArray, noMatch: noMatch })
+      res.render('new-index', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
       }
     });
   } else {
@@ -62,7 +62,7 @@ app.get("/", function(req, res){
       if(err){
           console.log(err);
       } else {
-        res.render("new-index", {ink: allInks, locationArray: locationArray, noMatch: noMatch });
+        res.render("index", {ink: allInks, locationArray: locationArray, noMatch: noMatch });
       }
     });
 }

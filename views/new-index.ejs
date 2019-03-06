@@ -20,59 +20,68 @@
 
     <!-- SEARCH INKS -->
     <div class="row">
-        <form action="/" method="GET" class="form-inline  col">
+        <form action="/" method="GET" class="col-lg-2">
             <div class="form-group">
-                <input type="text" name="search" placeholder="search..." class="form-control searchbox">
-                <input type="submit" value=">" class="btn btn-primary">
+                <input type="text" name="search" placeholder="search..." class="col form-control searchbox">
+                <input type="submit" value=">" class="col btn btn-sm btn-primary">
             </div>
         </form>
+       
+        <div class="col-lg-10"> 
+                <% if(noMatch !== null) { %>
+                    <h3><%= noMatch %></h3>
+                <% } else { %>
+                    <% ink.forEach(function(ink) { %>
+                        <form class="" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" > 
+                            <div class="col bucket-name"><%= ink.ink %></div>
+                            <% console.log(ink.location) %>
+                            <div class="col checkbox-inline press-buttons">
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-radio" name="ink[location]" type="radio" value="NTMD" <%= ink.location == 'NTMD' ? 'checked' : ''%> ><%= locationArray[0] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-radio" name="ink[location]" type="radio" value="SHLF" <%= ink.location == 'SHLF' ? 'checked' : ''%> ><%= locationArray[1] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="C218" <%= ink.location.includes('C218') ? 'checked' : ''%> ><%= locationArray[2] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="C312" <%= ink.location.includes('C312') ? 'checked' : ''%> ><%= locationArray[3] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="C318" <%= ink.location.includes('C318') ? 'checked' : ''%> ><%= locationArray[4] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="GA10" <%= ink.location.includes('GA10') ? 'checked' : ''%> ><%= locationArray[5] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="GA18" <%= ink.location.includes('GA18') ? 'checked' : ''%> ><%= locationArray[6] %>
+                                </label>
 
-        <% ink.forEach(function(ink) { %>
-        <form class="form-check form-check-inline" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" >
-            <div class="col bucket-name"><%= ink.ink %></div>
-            <div class="col-xs-10 btn-group-toggle checkbox-inline press-buttons">
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="Not Made"><%= locationArray[0] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="On Shelf"><%= locationArray[1] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="C2"><%= locationArray[2] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="C3-12"><%= locationArray[3] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="C3-18"><%= locationArray[4] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="Gauntlet"><%= locationArray[5] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="Gauntlet-18"><%= locationArray[6] %>
-                </label>
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="SMPL" <%= ink.location.includes('SMPL') ? 'checked' : ''%> ><%= locationArray[7] %>
+                                </label>
+                            
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="SP10" <%= ink.location.includes('SP10') ? 'checked' : ''%> ><%= locationArray[8] %>
+                                </label>
 
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="Samples"><%= locationArray[7] %>
-                </label>
-            
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="Sportsman-10"><%= locationArray[8] %>
-                </label>
-
-                <label class="btn btn-sm btn-secondary">
-                    <input id="select" class="" name="ink[location]" type="checkbox" value="Sportsman-14"><%= locationArray[9] %>
-                </label>
-            </div>
-        </form>
-        <% }); %>	
+                                <label class="btn btn-sm btn-secondary">
+                                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="SP14" <%= ink.location.includes('SP14') ? 'checked' : ''%> ><%= locationArray[9] %>
+                                </label>
+                                
+                                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                            </div>
+                        </form>
+                <% }) %>
+            <% }; %>
+        </div>  	
     </div>    
 
     <!-- PRESSES -->

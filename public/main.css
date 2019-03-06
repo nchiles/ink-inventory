@@ -4,9 +4,9 @@
 
 .bucket-name {
     font-size: 1.5rem;
-    text-align: right;
 }
 
-.press-buttons {
-    text-align: right;
+/* keep press buttons and submit button inline */
+label {
+    margin-bottom: 0; 
 }
