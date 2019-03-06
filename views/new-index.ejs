@@ -11,71 +11,69 @@
 </head>
 <body>
 <div class="container">
+
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xl-12">
             <h1>Vector Ink Inventory</h1>
         </div>
     </div>
 
     <!-- SEARCH INKS -->
-    <div class="row searchink">
-        <div class="col-sm-2">
-            <form action="/" method="GET" class="form-inline">
-                <div class="form-group">
-                    <input type="text" name="search" placeholder="search..." class="form-control searchbox">
-                    <input type="submit" value=">" class="btn btn-primary">
-                </div>
-            </form>
-        </div>
-        <!-- <div class="col-sm-2 searchbox form-control">result</div> -->
-        <div class="col-sm-10">
-            <% ink.forEach(function(ink) { %>
-                <div class="col-sm-2"><%= ink.ink %></div>
-                <form class="col-sm-8" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" >
-                    <div class="btn-group-toggle checkbox-inline">
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="Not Made"><%= locationArray[0] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="On Shelf"><%= locationArray[1] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="C2"><%= locationArray[2] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="C3-12"><%= locationArray[3] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="C3-18"><%= locationArray[4] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="Gauntlet"><%= locationArray[5] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="Gauntlet-18"><%= locationArray[6] %>
-                        </label>
+    <div class="row">
+        <form action="/" method="GET" class="form-inline  col">
+            <div class="form-group">
+                <input type="text" name="search" placeholder="search..." class="form-control searchbox">
+                <input type="submit" value=">" class="btn btn-primary">
+            </div>
+        </form>
 
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="Samples"><%= locationArray[7] %>
-                        </label>
-                    
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="Sportsman-10"><%= locationArray[8] %>
-                        </label>
+        <% ink.forEach(function(ink) { %>
+        <form class="form-check form-check-inline" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" >
+            <div class="col bucket-name"><%= ink.ink %></div>
+            <div class="col-xs-10 btn-group-toggle checkbox-inline press-buttons">
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="Not Made"><%= locationArray[0] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="On Shelf"><%= locationArray[1] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="C2"><%= locationArray[2] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="C3-12"><%= locationArray[3] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="C3-18"><%= locationArray[4] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="Gauntlet"><%= locationArray[5] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="Gauntlet-18"><%= locationArray[6] %>
+                </label>
 
-                        <label class="btn btn-sm btn-secondary">
-                            <input id="select" class="" name="ink[location]" type="checkbox" value="Sportsman-14"><%= locationArray[9] %>
-                        </label>
-                    </div>
-                </form>
-            <% }); %>	
-        </div>
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="Samples"><%= locationArray[7] %>
+                </label>
+            
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="Sportsman-10"><%= locationArray[8] %>
+                </label>
+
+                <label class="btn btn-sm btn-secondary">
+                    <input id="select" class="" name="ink[location]" type="checkbox" value="Sportsman-14"><%= locationArray[9] %>
+                </label>
+            </div>
+        </form>
+        <% }); %>	
+    </div>    
 
     <!-- PRESSES -->
     <div class="row">
@@ -109,8 +107,7 @@
         <div class="col">
             <h5>SP14</h5>
         </div>
-    </div>
-    
+    </div> 
 </div>
 <script src="main.js"></script>  
 </body>

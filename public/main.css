@@ -2,7 +2,11 @@
     padding-top: 2rem;
 }
 
-.searchbox {
-    max-width: 100px;
+.bucket-name {
+    font-size: 1.5rem;
+    text-align: right;
 }
 
+.press-buttons {
+    text-align: right;
+}
