@@ -65,9 +65,19 @@ app.get("/", function(req, res){
         res.render("index", {ink: allInks, locationArray: locationArray, noMatch: noMatch });
       }
     });
-}
+  }
 });
-      
+
+
+app.get('/inklist', function(req, res){
+  Ink.find({}, { "ink": 1,  "_id": 0 }, function(err, allInks){
+    if(err){
+        console.log(err);
+    } else {
+      res.json(allInks);
+    }
+  });
+});
 
 //ADD INK TO DATABASE
 app.post('/inventory', (req, res) => {

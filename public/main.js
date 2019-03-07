@@ -14,5 +14,38 @@ $(".select-radio").click(function(){
   })
 });
 
-// if (input.value = ink[location])
-//   $('input[type="checkbox"]').prop('checked', true);
+//autocomplete search field
+// $( function() {
+//     var availableInks = [
+//       "ActionScript",
+//       "AppleScript",
+//       "Asp",
+//       "BASIC",
+//       "C",
+//       "C++",
+//       "Clojure",
+//       "COBOL",
+//       "ColdFusion",
+//       "Erlang",
+//       "Fortran",
+//       "Groovy",
+//       "Haskell",
+//       "Java",
+//       "JavaScript",
+//       "Lisp",
+//       "Perl",
+//       "PHP",
+//       "Python",
+//       "Ruby",
+//       "Scala",
+//       "Scheme"
+//     ];
+//     $( "#autocompleteInks" ).autocomplete({
+//       source: availableInks
+//     });
+//   });
+
+$( "#autocompleteInks" ).autocomplete({
+  source: "/index",
+  minLength: 2,
+});
