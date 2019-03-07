@@ -45,7 +45,7 @@ app.get("/", function(req, res){
       return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     };
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    // Get all inks from DB
+    // find inks from DB
     Ink.find({ink: regex}, function(err, foundInk){
       if(err){
         console.log(err);
@@ -70,13 +70,13 @@ app.get("/", function(req, res){
 
 
 app.get('/inklist', function(req, res){
-  Ink.find({}, { "ink": 1,  "_id": 0 }, function(err, allInks){
-    if(err){
-        console.log(err);
-    } else {
-      res.json(allInks);
-    }
-  });
+	Ink.distinct("ink", function(err, allInks) {
+		if(err){
+			console.log(err);
+		} else {
+      res.json(allInks); 
+    }  	
+  })
 });
 
 //ADD INK TO DATABASE

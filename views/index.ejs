@@ -22,7 +22,7 @@
     <div class="row">
         <form action="/" method="GET" class="col-lg-2">
             <div class="form-group">
-                <input type="text" name="search" placeholder="search..." class="col form-control searchbox">
+                <input id="autocompleteInks" type="text" name="search" placeholder="search..." class="col form-control searchbox">
                 <input type="submit" value=">" class="col btn btn-sm btn-primary">
             </div>
         </form>
@@ -37,28 +37,68 @@
 
     <div class="row">
         <div class="col">
-            <h5>C218</h5>
-        </div>
+                <h5>C218</h5>
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("C218")) { %>
+                        <div class="press-bucket-list"><%= ink.ink %></div>
+                    <% } %>
+                <% }) %>
+            </div>
         <div class="col">
             <h5>C312</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("C312")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
         <div class="col">
             <h5>C318</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("C318")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
         <div class="col">
             <h5>GA10</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("GA10")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
         <div class="col">
             <h5>GA18</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("GA18")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
         <div class="col">
             <h5>SMPL</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("SMPL")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
         <div class="col">
             <h5>SP10</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("SP10")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
         <div class="col">
             <h5>SP14</h5>
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("SP14")) { %>
+                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% } %>
+            <% }) %>
         </div>
     </div> 
 </div>
