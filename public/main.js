@@ -57,3 +57,22 @@ $(() => {
       })
   }    
 })
+
+
+$('input[type=checkbox]').each(function(){
+  if($(this).is(':checked')) {
+      $(this).parent().removeClass("btn-secondary");
+  } 
+});
+
+$('label').change(function(e) {
+  $(this).toggleClass("btn-secondary"); //you can list several class names 
+  e.preventDefault();
+});
+
+$( function() {
+  $( "#sortable" ).sortable({
+    placeholder: "ui-state-highlight"
+  });
+  $( "#sortable" ).disableSelection();
+} );

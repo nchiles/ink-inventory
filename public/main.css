@@ -14,3 +14,19 @@ label {
 .press-bucket-list {
     
 }
+
+.select-checkbox {
+    display: none;
+}
+
+#sortable { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 60%; 
+    cursor: pointer;
+}
+
+#sortable li { margin: 0 5px 5px 5px; padding: 5px; }
+html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }

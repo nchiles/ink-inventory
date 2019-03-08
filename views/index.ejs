@@ -21,9 +21,9 @@
     <!-- SEARCH INKS -->
     <div class="row">
         <form action="/" method="GET" class="col-lg-2">
-            <div class="form-group">
-                <input id="autocompleteInks" type="text" name="search" placeholder="search..." class="col form-control searchbox">
-                <input type="submit" value=">" class="col btn btn-sm btn-primary">
+            <div class="row form-group">
+                <input id="autocompleteInks" type="text" name="search" placeholder="search..." class="col-sm-10 form-control searchbox">
+                <input type="submit" value=">" class="col-sm-2 btn btn-sm btn-primary">
             </div>
         </form>
     </div>    
@@ -37,28 +37,35 @@
 
     <div class="row">
         <div class="col">
-                <h5>C218</h5>
-                <% ink.forEach(function(ink) { %>
-                    <% if (ink.location.includes("C218")) { %>
-                        <div class="press-bucket-list"><%= ink.ink %></div>
-                    <% } %>
-                <% }) %>
-            </div>
-        <div class="col">
-            <h5>C312</h5>
+            <h5>C218</h5>
+            <ul id="sortable">
+            <li class="ui-state-default"><input></li>
             <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("C312")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
+                <% if (ink.location.includes("C218")) { %>
+                    <li class="ui-state-default"><%= ink.ink %></li>
                 <% } %>
             <% }) %>
+            </ul>
+        </div>
+        <div class="col">
+            <h5>C312</h5>
+            <ul id="sortable">
+            <% ink.forEach(function(ink) { %>
+                <% if (ink.location.includes("C312")) { %>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= ink.ink %></li>
+                <% } %>
+            <% }) %>
+            </ul>
         </div>
         <div class="col">
             <h5>C318</h5>
+            <ul id="sortable">
             <% ink.forEach(function(ink) { %>
                 <% if (ink.location.includes("C318")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
+                    <li class="ui-state-default"><%= ink.ink %></li>
                 <% } %>
             <% }) %>
+            </ul>
         </div>
         <div class="col">
             <h5>GA10</h5>

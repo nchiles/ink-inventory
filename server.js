@@ -41,19 +41,21 @@ var locationArray = [
 app.get("/", function(req, res){
   var noMatch = null;
   if(req.query.search) {
-    function escapeRegex(text) {
-      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    };
-    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    // find inks from DB
-    Ink.find({ink: regex}, function(err, foundInk){
+    //FUZZY SEARCH
+    // function escapeRegex(text) {
+    //   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+    // };
+    // const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    
+    // Find one ink from DB
+    Ink.find({ink: req.query.search}, function(err, foundInk){
       if(err){
         console.log(err);
     } else {
         if(foundInk.length < 1) {
           noMatch = "No match, please try again.";
       }
-      res.render('new-index', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
+        res.render('new-index', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
       }
     });
   } else {
