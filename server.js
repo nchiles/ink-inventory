@@ -37,15 +37,17 @@ var locationArray = [
     'SP14'
 ]
 
-// SHOW INK LIST
+//GET SEARCH RESULT OR ALL INKS
 app.get("/", function(req, res){
   var noMatch = null;
   if(req.query.search) {
-    //FUZZY SEARCH
+    
+    ////FUZZY SEARCH////
     // function escapeRegex(text) {
     //   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     // };
     // const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    ////////////////////
     
     // Find one ink from DB
     Ink.find({ink: req.query.search}, function(err, foundInk){
@@ -70,7 +72,7 @@ app.get("/", function(req, res){
   }
 });
 
-
+//LIST OF STRINGS FOR AUTOCOMPLETE ON SEARCH BOX
 app.get('/inklist', function(req, res){
 	Ink.distinct("ink", function(err, allInks) {
 		if(err){
@@ -100,9 +102,6 @@ app.post('/inventory', (req, res) => {
     res.redirect('/')
   })
 })
-
-//SEARCH INK
-
 
 // UPDATE LOCATION
 app.put('/:id', function(req, res){

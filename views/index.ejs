@@ -36,76 +36,85 @@
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col c218-col">
             <h5>C218</h5>
-            <ul id="sortable">
-            <li class="ui-state-default"><input></li>
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("C218")) { %>
-                    <li class="ui-state-default"><%= ink.ink %></li>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("C218")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
             </ul>
         </div>
         <div class="col">
             <h5>C312</h5>
-            <ul id="sortable">
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("C312")) { %>
-                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= ink.ink %></li>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("C312")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
             </ul>
         </div>
         <div class="col">
             <h5>C318</h5>
-            <ul id="sortable">
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("C318")) { %>
-                    <li class="ui-state-default"><%= ink.ink %></li>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("C318")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
             </ul>
         </div>
         <div class="col">
             <h5>GA10</h5>
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("GA10")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("GA10")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
+            </ul>
         </div>
         <div class="col">
             <h5>GA18</h5>
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("GA18")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("GA18")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
+            </ul>
         </div>
         <div class="col">
             <h5>SMPL</h5>
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("SMPL")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("SMPL")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
+            </ul>      
         </div>
         <div class="col">
             <h5>SP10</h5>
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("SP10")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("SP10")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
+            </ul>
         </div>
         <div class="col">
             <h5>SP14</h5>
-            <% ink.forEach(function(ink) { %>
-                <% if (ink.location.includes("SP14")) { %>
-                    <div class="press-bucket-list"><%= ink.ink %></div>
-                <% } %>
-            <% }) %>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("SP14")) { %>
+                        <li class="ui-state-default"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
+            </ul>
         </div>
     </div> 
 </div>

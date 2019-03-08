@@ -2,8 +2,23 @@
     padding-top: 2rem;
 }
 
+.searchbox {
+    margin-top: 1.25rem;
+}
+
+.search-button {
+    margin-top: 1.25rem;
+}
+
+
 .bucket-name {
-    font-size: 1.5rem;
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.press-buttons {
+    text-align: center;
 }
 
 /* keep press buttons and submit button inline */
@@ -11,22 +26,33 @@ label {
     margin-bottom: 0; 
 }
 
-.press-bucket-list {
-    
+h5 {
+    padding-left: 0.7rem;
 }
 
-.select-checkbox {
+.select-checkbox, .select-radio {
     display: none;
 }
 
-#sortable { 
+.sortable { 
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
-    width: 60%; 
     cursor: pointer;
 }
 
-#sortable li { margin: 0 5px 5px 5px; padding: 5px; }
-html>body #sortable li { height: 1.5em; line-height: 1.2em; }
-.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+.sortable li {
+    margin: 0 5px 5px 5px;
+    padding: 5px; 
+}
+
+.ui-state-highlight { 
+    height: 2rem; 
+    background: rgb(255, 255, 255) !important;
+    border: 1px solid rgb(214, 214, 214) !important;
+}
+
+.c218-col {
+    /* border-right: 1px solid lightblue; */
+
+}
