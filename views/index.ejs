@@ -14,18 +14,25 @@
 
     <div class="row">
         <div class="col-xl-12">
-            <h1>Vector Ink Inventory</h1>
+            <h1><a href="/">Vector Ink Inventory</a></h1>
         </div>
     </div>
 
     <!-- SEARCH INKS -->
     <div class="row">
-        <form action="/" method="GET" class="col-lg-2">
+        <!-- <form action="/search" method="GET" id="query" class="col-lg-2"> -->
+        <form id="query" class="col-lg-2">
             <div class="row form-group">
                 <input id="autocompleteInks" type="text" name="search" placeholder="search..." class="col-sm-10 form-control searchbox">
-                <input type="submit" value=">" class="col-sm-2 btn btn-sm btn-primary">
+                <input value=">" class="col-sm-2 btn btn-sm btn-primary search-button">
             </div>
         </form>
+        <div class="col-lg-10"> 
+            
+                <div class="col-lg-12 result"><%= ink.ink %></div>
+                <div class="col-lg-12 result1"><%= ink.location %></div>      
+           
+        </div>  	
     </div>    
 
     <!-- PRESSES -->
