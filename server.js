@@ -43,7 +43,7 @@ app.get("/", function(req, res){
     if(err){
       console.log(err);
     } else {
-      res.render("index", {ink: allInks, locationArray: locationArray })
+      res.render("index", {all: allInks, locationArray: locationArray })
     }
   });
 })

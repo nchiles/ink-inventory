@@ -33,7 +33,10 @@ $(".search-button").click(function(e){
   e.preventDefault();
   query = $('#autocompleteInks').val()
   $.ajax({  
-    url: '/search' + '?search=' + query,
+    url: '/search',
+    data: {
+      'search': query
+    },
     type: 'GET',
     dataType: "json",
     success: function(data) {
