@@ -14,18 +14,35 @@
 
     <div class="row">
         <div class="col-xl-12">
-            <h1>Vector Ink Inventory</h1>
+            <h1><a href="/">Vector Ink Inventory</a></h1>
         </div>
     </div>
 
     <!-- SEARCH INKS -->
     <div class="row">
-        <form action="/" method="GET" class="col-lg-2">
+        <!-- <form action="/search" method="GET" id="query" class="col-lg-2"> -->
+        <form id="query" class="col-lg-2">
             <div class="row form-group">
                 <input id="autocompleteInks" type="text" name="search" placeholder="search..." class="col-sm-10 form-control searchbox">
-                <input type="submit" value=">" class="col-sm-2 btn btn-sm btn-primary">
+                <input type="submit" value=">" class="col-sm-2 btn btn-sm btn-primary search-button">
             </div>
         </form>
+
+        <div class="col-lg-2 inkresult"> 
+            <% ink.forEach(function(foundink) { %>    
+                <div class="col-lg-12 bucket-name"><%= ink.foundink %></div>    
+            <% }) %>
+        </div>
+        <div class="col-lg-2 locationresult"> 
+            <% ink.forEach(function(foundlocation) { %>   
+                <div class="col-lg-12 bucket-name"><%= ink.foundlocation %></div>    
+            <% }) %>    
+        </div>  	
+        <div class="col-lg-2 idresult"> 
+            <% ink.forEach(function(foundid) { %>   
+                <div class="col-lg-12 bucket-name"><%= ink.foundid %></div>    
+            <% }) %>    
+        </div>  
     </div>    
 
     <!-- PRESSES -->

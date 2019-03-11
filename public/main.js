@@ -6,7 +6,7 @@ $(".select-checkbox").click(function(){
   })
 });
 
-//uncheck press checkbox if ntmd/shlf radio button checked
+//uncheck press radio if ntmd/shlf radio button checked
 $(".select-radio").click(function(){
   $(':checkbox').each(function () {
     $(this).removeAttr('checked');
@@ -28,36 +28,41 @@ $( function() {
   });
 });
 
-// //UPDATE VARIABLES WITH AJAX
-// $(() => {
-//   const $form = $('#form')
-//   $form.on('submit', handleForm)
-//   function handleForm(e) {
-//       e.preventDefault()
-            
-//       const options = {
-//           method: $form.attr('method'),
-//           url: $form.attr('action'),
-//           data: $form.serialize(), 
-//           success: 
-//               $(document).ready (function(){
-//                   $('#form')[0].reset(); 
-//                   $('body').off().on('submit','#form', function() {  
-//                       $(".presses").load(location.href+" .presses>*",""); /* reload status bar */
-//                       // $(".status-bar-overlay").load(location.href+" .status-bar-overlay>*",""); /* reload status bar */
-      
-//                       // $(".bg-overlay").fadeIn("fast").addClass("show-bg-overlay").delay(1200).fadeOut(1500); //background
-//                       // $(".overlay").fadeIn("fast").addClass("show-overlay").delay(1200).slideUp(800).fadeOut(1000); //words
-//                       // $(".status-bar-overlay").delay(1500).animate({"font-size":".5em"}).fadeOut(400).fadeIn().animate({"font-size":"2.5em"});
-//                   });
-//               }),
-//       }
-//       $.ajax(options).done(response => {
-//           console.log(response)
-//       })
-//   }    
-// })
 
+$(".search-button").click(function(e){
+  e.preventDefault();
+  query = $('#autocompleteInks').val()
+  $.ajax({  
+    url: '/search' + '?search=' + query,
+    type: 'GET',
+    dataType: "json",
+    success: function(data) {
+      $('.inkresult').html(data.ink.ink);
+      $('.locationresult').html(data.ink.location);
+      $('.idresult').html(data.ink._id);
+      console.log(data);
+    },
+    error: function(err) {
+        console.log(err);
+    }
+  });
+});
+
+$(".update-location").click(function(e){
+  e.preventDefault();
+  query = $('.result1').val()
+  $.ajax({  
+    url: '/:id',
+    type: 'PUT',
+    dataType: "json",
+    success: function(data) {
+      console.log(data);
+    },
+    error: function(err) {
+        console.log(err);
+    }
+  });
+});
 
 $('input[type=checkbox]').each(function(){
   if($(this).is(':checked')) {
