@@ -72,6 +72,32 @@ app.get("/", function(req, res){
   }
 });
 
+// app.get("/", function(req, res){
+//   // FIND ALL INKS FROM DB
+//   Ink.find({}, function(err, allInks){
+//     if(err){
+//       console.log(err);
+//     } else {
+//       res.render("index", {ink: allInks, locationArray: locationArray })
+//     }
+//   });
+// })
+
+// app.get("/", function(req, res) {
+//   // FIND ONE INK FROM DB
+//   var noMatch = null;
+//   Ink.findOne({ink: req.query.search}, function(err, foundInk){
+//     if(err){
+//       console.log(err);
+//     } else 
+//       if(!foundInk) {
+//         noMatch = "No match, please try again.";
+//       }
+
+//       res.render("new-index", {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
+//   });
+// });
+
 //LIST OF STRINGS FOR AUTOCOMPLETE ON SEARCH BOX
 app.get('/inklist', function(req, res){
 	Ink.distinct("ink", function(err, allInks) {
