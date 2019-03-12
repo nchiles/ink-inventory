@@ -27,7 +27,9 @@
                 <input type="submit" value=">" class="col-sm-2 btn btn-sm btn-primary search-button">
             </div>
         </form>
-
+    </div> 
+    
+    <div class="row">
         <div class="col-lg-2 inkresult"> 
             <% ink.forEach(function(foundink) { %>    
                 <div class="col-lg-12 bucket-name"><%= ink.foundink %></div>    
@@ -43,9 +45,6 @@
                 <div class="col-lg-12 bucket-name"><%= ink.foundid %></div>    
             <% }) %>    
         </div>  
-    </div> 
-    
-    <div class="row">
         <form class="col-xl-12" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" > 
             <div class=" checkbox-inline press-buttons">
                 <label class="btn btn-secondary">
@@ -91,14 +90,15 @@
                 <button class="btn btn-primary" type="submit">Submit</button>
             </div>
         </form>
+    </div>
 
     <!-- PRESSES -->
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xl-12">
             <h3>Inks In Use</h3>
         </div>
     </div>
-
+ 
     <div class="row">
         <div class="col c218-col">
             <h5>C218</h5>
