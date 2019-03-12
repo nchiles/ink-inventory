@@ -2,17 +2,13 @@
     padding-top: 2rem;
 }
 
-.searchbox {
-    margin-top: 1.25rem;
-}
-
-.search-button {
-    margin-top: 1.25rem;
+#searchresults {
+    position: relative;
 }
 
 
 .bucket-name {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: 700;
 }
@@ -26,8 +22,8 @@ label {
     margin-bottom: 0; 
 }
 
-h5 {
-    padding-left: 0.7rem;
+h3 {
+    margin-top: 4rem;
 }
 
 .select-checkbox, .select-radio {

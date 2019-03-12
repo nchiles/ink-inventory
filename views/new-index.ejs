@@ -27,15 +27,15 @@
             </div>
         </form> -->
        
-        <div class="col-lg-10" id="searchresults"> 
+        <div id="searchresults"> 
             <% if(noMatch !== null) { %>
                 <h3><%= noMatch %></h3>
             <% } else { %>
                 <% ink.forEach(function(ink) { %>
                     <form class="row" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" > 
-                        <div class="col-lg-12 bucket-name"><%= ink.ink %></div>
+                        <div class="col bucket-name"><%= ink.ink %></div>
                         <% console.log(ink.location) %>
-                        <div class="col-lg-12 checkbox-inline press-buttons">
+                        <div class="col-lg-11 checkbox-inline press-buttons">
                             <label class="btn btn-secondary">
                                 <input id="select" class="select-radio" name="ink[location]" type="radio" value="NTMD" <%= ink.location == 'NTMD' ? 'checked' : ''%> ><%= locationArray[0] %>
                             </label>
