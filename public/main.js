@@ -28,12 +28,12 @@ $(".select-radio").click(function(){
   })
 });
 
-$('input[type=checkbox]').each(function(){
-  if($(this).prop('checked')) {
-      $(this).parent().removeClass("press-buttons");
-      $(this).parent().addClass("press-buttons-checked");
-  } 
-});
+// $('input[type=checkbox]').each(function(){
+//   if($(this).prop('checked')) {
+//       $(this).parent().removeClass("press-buttons");
+//       $(this).parent().addClass("press-buttons-checked");
+//   } 
+// });
 
 // $("label").change(function() {
 //   var checkBoxes = $("input[type=checkbox]");
