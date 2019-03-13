@@ -1,19 +1,3 @@
-//uncheck press checkbox if ntmd/shlf radio button checked
-$(".select-checkbox").click(function(){
-  $(':radio').each(function () {
-    $(this).removeAttr('checked');
-    $('input[type="radio"]').prop('checked', false);
-  })
-});
-
-//uncheck press checkbox if ntmd/shlf radio button checked
-$(".select-radio").click(function(){
-  $(':checkbox').each(function () {
-    $(this).removeAttr('checked');
-    $('input[type="checkbox"]').prop('checked', false);
-  })
-});
-
 // autocomplete search field
 var xhReq = new XMLHttpRequest();
 xhReq.open("GET", "/inklist", false);
@@ -27,27 +11,58 @@ $( function() {
   });
 });
 
+//PRESS CHECKBOX LOGIC
+//uncheck press checkbox if ntmd/shlf radio button checked
+$(".select-checkbox").click(function(){
+  $(':radio').each(function () {
+    $(this).prop('checked');
+    $('input[type="radio"]').prop('checked', false);
+  })
+});
+
+//uncheck press checkbox if ntmd/shlf radio button checked
+$(".select-radio").click(function(){
+  $(':checkbox').each(function () {
+    $(this).prop('checked');
+    $('input[type="checkbox"]').prop('checked', false);
+  })
+});
+
 $('input[type=checkbox]').each(function(){
-  if($(this).is(':checked')) {
-      $(this).parent().removeClass("btn-secondary");
+  if($(this).prop('checked')) {
+      $(this).parent().removeClass("press-buttons");
+      $(this).parent().addClass("press-buttons-checked");
   } 
 });
 
-$('label').change(function(e) {
-  $(this).toggleClass("btn-secondary"); //you can list several class names 
-  e.preventDefault();
-});
+// $("label").change(function() {
+//   var checkBoxes = $("input[type=checkbox]");
+//   checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+// });
 
+// $("label").change(function() {
+//   var radioBoxes = $("input[type=radio]");
+//   var checkBoxes = $("input[type=checkbox]");
+//   if (radioBoxes.prop("checked")) {
+//     !checkBoxes.prop("checked");
+//   }
+// });
+
+// $('label').change(function(e) {
+//   $(this).toggleProp("btn-outline-secondary");
+//   e.preventDefault();
+// });
+
+//LOAD SEARCH RESULTS
 $('.searchsubmit').click(function(e){
-  // var replaced = str.replace(/ /g, '+');
   var query = $("#autocompleteInks").val().replace(/ /g, '+')
   e.preventDefault();
   $('#searchresults').load('/?search=' + query);
 });
 
-$( function() {
-  $( ".sortable" ).sortable({
-    placeholder: "ui-state-highlight"
-  });
-  $( ".sortable" ).disableSelection();
-} );
+// $( function() {
+//   $( ".sortable" ).sortable({
+//     placeholder: "ui-state-highlight"
+//   });
+//   $( ".sortable" ).disableSelection();
+// } );
