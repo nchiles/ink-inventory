@@ -39,7 +39,8 @@ $('label').change(function(e) {
 });
 
 $('.searchsubmit').click(function(e){
-  var query = $("#autocompleteInks").val()
+  // var replaced = str.replace(/ /g, '+');
+  var query = $("#autocompleteInks").val().replace(/ /g, '+')
   e.preventDefault();
   $('#searchresults').load('/?search=' + query);
 });
