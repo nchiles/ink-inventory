@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Vector Ink Inventory</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/main.css">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-</head>
-<body>
-<div class="container">
-    <div id="searchresults"> 
+
+
+    <div id="searchresults" class="container"> 
         <% if(noMatch !== null) { %>
             <h3><%= noMatch %></h3>
         <% } else { %>
@@ -63,7 +52,8 @@
                         <span id="sp10-button">
                             <input type="checkbox" id="select-sp10" class="select-checkbox" name="ink[location]" value="SP10" <%= ink.location.includes('SP10') ? 'checked' : ''%> />
                             <label for="select-sp10"><%= locationArray[8] %></label>
-                            
+                        </span>
+                          
                         <span id="sp14-button">    
                             <input type="checkbox" id="select-sp14" class="select-checkbox" name="ink[location]" value="SP14" <%= ink.location.includes('SP14') ? 'checked' : ''%> />
                             <label for="select-sp14"><%= locationArray[9] %></label>
@@ -75,9 +65,8 @@
             <% }) %>
         <% }; %>
     </div>  	
-</div>    
+ 
 <script src="main.js"></script>  
-</body>
-</html>
+
 
 

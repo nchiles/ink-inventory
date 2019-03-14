@@ -2,23 +2,128 @@
     background: #e0e0e0
 } */
 
+h1 {
+    margin-top: 2rem;
+}
+
 /* START SEARCH RESULTS SECTION */
 .searchform {
     padding: unset;
 }
 
 .search-section {
-    border: 1px solid rgb(216, 216, 216);
-    border-radius: .25rem;
-    background: #ebebeb;
-    padding: 2.75rem 1rem;
+    /* border: 1px solid rgb(216, 216, 216); */
+    /* border-radius: .25rem;
+    background: #ebebeb; */
+    padding: 2.75rem 0;
 }
 
 .bucket-name {
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: right;
     font-weight: 700;
-    line-height: 40px;
+}
+
+.btn {
+    vertical-align: unset; 
+}
+/* keeps seach section div at correct height  */
+
+/***********************
+ * Essential Structure *
+ ***********************/
+ .flexsearch--wrapper {
+    display: inline-block;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+    background: transparent;
+    margin: 0;
+    position: static;
+}
+	
+.flexsearch--form {
+	overflow: hidden;
+	position: relative;
+}
+	
+.flexsearch--input-wrapper {
+	padding: 0 40px 0 0; /* Right padding for submit button width */
+	overflow: hidden;
+}
+
+.flexsearch--input {
+  width: 100%;
+}
+
+/***********************
+ * Configurable Styles *
+ ***********************/
+/* .flexsearch {
+  padding: 0 250px 0 250px; 
+} */
+
+.flexsearch--input {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 2.5rem;
+    padding: 0 0 0 1rem;
+    border-color: #888;
+    border-radius: 35px; /* (height/2) + border-width */
+    border-style: solid;
+    border-width: 1px;
+    /* margin-top: 15px; */
+    color: #333;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+	
+.flexsearch--submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    /* width: 60px;
+    height: 20px; */
+    /* padding: 0; */
+    border: none;
+    margin-top: 10px;
+    margin-right: 30px;
+    background: transparent;
+    color: #bbb;
+    /* font-family: 'Helvetica', sans-serif; */
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.flexsearch--input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.flexsearch--input:focus.flexsearch--submit {
+ 	color: #333; 
+}
+
+.flexsearch--submit:hover {
+  color: #333;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+	color: #888;  
+}
+
+input:-moz-placeholder {
+  color: #888
+}
+
+#searchresults {
+    display: inline-block;
 }
 
 /* start location checkboxes */
@@ -28,13 +133,13 @@
   
 .location-selector input[type=checkbox] + label,  input[type=radio] + label {
     display: inline-block;
-    border-radius: 6px;
+    /* border-radius: .25rem; */
     background: #f7f7f7;
     color: #dddddd;;
-    height: 2.5rem;
-    width: 60px;
-    margin-right: 3px;
-    line-height: 2.5rem;
+    height: 2.4rem;
+    width: 50px;
+    margin-left: -4px;
+    line-height: 2.4rem;
     text-align: center;
     cursor: pointer;
 }
