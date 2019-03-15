@@ -12,9 +12,6 @@ h1 {
 }
 
 .search-section {
-    /* border: 1px solid rgb(216, 216, 216); */
-    /* border-radius: .25rem;
-    background: #ebebeb; */
     padding: 2.75rem 0;
 }
 
@@ -76,7 +73,7 @@ h1 {
     border-width: 1px;
     /* margin-top: 15px; */
     color: #333;
-    font-family: 'Helvetica', sans-serif;
+    /* font-family: 'Helvetica', sans-serif; */
     font-size: 16px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -122,6 +119,10 @@ input:-moz-placeholder {
   color: #888
 }
 
+.ui-widget.ui-widget-content {
+    border: unset !important; 
+}
+
 #searchresults {
     display: inline-block;
 }
@@ -133,12 +134,13 @@ input:-moz-placeholder {
   
 .location-selector input[type=checkbox] + label,  input[type=radio] + label {
     display: inline-block;
-    /* border-radius: .25rem; */
+    border-radius: .25rem;
     background: #f7f7f7;
+    border: 1px solid #f7f7f7;
     color: #dddddd;;
     height: 2.4rem;
-    width: 50px;
-    margin-left: -4px;
+    width: 60px;
+    /* margin-left: -4px; */
     line-height: 2.4rem;
     text-align: center;
     cursor: pointer;
@@ -148,45 +150,107 @@ input:-moz-placeholder {
     background: #3a3a3a;
     color: #ffffff;
 }
+#ntmd-button input[type=radio]:not(:checked) + label:hover {
+    border: 1px solid #3a3a3a;
+    color: #3a3a3a;
+}
+
 #shlf-button input[type=radio]:checked + label {
     background: #a7a7a7;
     color: #ffffff;
 }
+#shlf-button input[type=radio]:not(:checked) + label:hover {
+    border: 1px solid #a7a7a7;
+    color: #a7a7a7;
+}
+
 #c218-button input[type=checkbox]:checked + label {
-    background: #5b397a;
+    background: #6d4092;
     color: #ffffff;
 }
+#c218-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #6d4092;
+    color: #6d4092;
+}
+
 #c312-button input[type=checkbox]:checked + label {
     background: #1463b5;
     color: #ffffff;
 }
+#c312-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #1463b5;
+    color: #1463b5;
+}
+
 #c318-button input[type=checkbox]:checked + label {
     background: #368f80;
     color: #ffffff;
 }
+#c318-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #368f80;
+    color: #368f80;
+}
+
 #ga10-button input[type=checkbox]:checked + label {
     background: #46aa27;
     color: #ffffff;
 }
+#ga10-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #46aa27;
+    color: #46aa27;
+}
+
 #ga18-button input[type=checkbox]:checked + label {
     background: #dece0d;
     color: #ffffff;
 }
+#ga18-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #dece0d;
+    color: #dece0d;
+}
+
 #smpl-button input[type=checkbox]:checked + label {
-    background: rgb(247, 119, 14);
+    background: #f7770e;
     color: #ffffff;
 }
+#smpl-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #f7770e;
+    color: #f7770e;
+}
+
 #sp10-button input[type=checkbox]:checked + label {
     background: #cf1b1b;
     color: #ffffff;
 }
+#sp10-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #cf1b1b;
+    color: #cf1b1b;
+}
+
 #sp14-button input[type=checkbox]:checked + label {
-    background: rgb(220, 47, 226);
+    background: #c952ce;
     color: #ffffff;
+}
+#sp14-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #c952ce;
+    color: #c952ce;
 }
 
 label {
     margin-bottom: unset;
+}
+
+.submit-location {
+    color: black;
+    border: 1px solid black;
+    background: white;
+    border-radius: .25rem;
+    font-size: 15px;
+    padding: .4rem .5rem;
+}
+
+.submit-location:hover {
+    background: #efefef;
 }
 /* end location checkboxes */
 /* ENDSEARCH RESULTS SECTION */

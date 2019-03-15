@@ -60,6 +60,11 @@ $('.searchsubmit').click(function(e){
   $('#searchresults').load('/?search=' + query);
 });
 
+ //CLEAR SEACHBOX
+$( '.flexsearch--form' ).each(function(){
+  this.reset();
+});
+
 // $( function() {
 //   $( ".sortable" ).sortable({
 //     placeholder: "ui-state-highlight"
