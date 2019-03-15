@@ -23,44 +23,28 @@ var jsonObject = JSON.parse(xhReq.responseText);
 
 $( function() {
   var availableInks = jsonObject;
-  $( "#autocompleteInks" ).autocomplete({
+  $( "#search" ).autocomplete({
     source: availableInks
   });
 });
 
-
-$(".search-button").click(function(e){
-  e.preventDefault();
-  query = $('#autocompleteInks').val()
-  $.ajax({  
-    url: '/search' + '?search=' + query,
-    type: 'GET',
-    dataType: "json",
-    success: function(data) {
-      $('.inkresult').html(data.ink.ink);
-      $('.locationresult').html(data.ink.location);
-      $('.idresult').html(data.ink._id);
-      console.log(data);
-    },
-    error: function(err) {
-        console.log(err);
-    }
-  });
-});
-
-$(".update-location").click(function(e){
-  e.preventDefault();
-  query = $('.result1').val()
-  $.ajax({  
-    url: '/:id',
-    type: 'PUT',
-    dataType: "json",
-    success: function(data) {
-      console.log(data);
-    },
-    error: function(err) {
-        console.log(err);
-    }
+$(document).ready(function() {
+  $("#search").keyup(function() {
+      $.ajax({
+          url: "/search?q=" + this.value
+      }).done(function(r) {
+          const ink = r.data;
+          if (ink)
+              $("#result-ink").html(r.data.ink) &&
+              $("#result-location").html(r.data.location) &&
+              $("#result-id").html(r.data._id);
+          else
+              $("#result-ink").html('No ink found') &&
+              $("#result-location").html('') &&
+              $("#result-id").html('');
+      }).fail(function(err) {
+          console.error(err); 
+      });;
   });
 });
 

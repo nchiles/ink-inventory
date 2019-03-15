@@ -43,25 +43,40 @@ app.get("/", function(req, res){
     if(err){
       console.log(err);
     } else {
+      // console.log('inks', ink);
       res.render("index", {ink: allInks, locationArray: locationArray })
     }
   });
 })
 
+// app.get('/', (req, res, next) => {
+//   Fruit.find({}, (err, fruits) => {
+//       if (err)
+//           return next(err);
+//       console.log('fruits', fruits);
+//       res.render('index', { fruits: fruits });
+//   });
+// });
+
 app.get("/search", function(req, res) {
-  // FIND ONE INK FROM DB
-  var noMatch = null;
-  Ink.findOne({ink: req.query.search}, function(err, foundInk){
+  // Ink.findOne({ ink: new RegExp(req.query.q, "i") }, function(err, foundInk){
+  Ink.findOne({ ink: req.query.q }, function(err, foundInk){
     if(err){
       console.log(err);
-    } else 
-      if(!foundInk) {
-        noMatch = "No match, please try again.";
-      }
-      res.json({ink: foundInk, locationArray: locationArray, noMatch: noMatch})
+    } else {
+      res.json({data: foundInk, locationArray: locationArray})
       console.log(foundInk)
-    });
+    };
+  });
 });
+// app.get('/search', (req, res, next) => {
+//   // Use RegExp to find documents with name LIKE req.query.q
+//   Fruit.findOne({ name: new RegExp(req.query.q, "i") }, (err, fruit) => {
+//       if (err)
+//           return res.status(500).json({ error: err.message });
+//       res.json({ data: fruit });
+//   });
+// });
 
 //LIST OF STRINGS FOR AUTOCOMPLETE ON SEARCH BOX
 app.get('/inklist', function(req, res){

@@ -23,74 +23,17 @@
         <!-- <form action="/search" method="GET" id="query" class="col-lg-2"> -->
         <form id="query" class="col-lg-2">
             <div class="row form-group">
-                <input id="autocompleteInks" type="text" name="search" placeholder="search..." class="col-sm-10 form-control searchbox">
+                <input id="search" type="text" placeholder="search..." class="col-sm-10 form-control searchbox">
                 <input type="submit" value=">" class="col-sm-2 btn btn-sm btn-primary search-button">
             </div>
         </form>
+        <div class="col" id="result-ink"></div>
+        <div class="col" id="result-location"></div>
+        <div class="col" id="result-id"></div>
     </div> 
+
     
-    <div class="row">
-        <div class="col-lg-2 inkresult"> 
-            <% ink.forEach(function(foundink) { %>    
-                <div class="col-lg-12 bucket-name"><%= ink.foundink %></div>    
-            <% }) %>
-        </div>
-        <div class="col-lg-2 locationresult"> 
-            <% ink.forEach(function(foundlocation) { %>   
-                <div class="col-lg-12 bucket-name"><%= ink.foundlocation %></div>    
-            <% }) %>    
-        </div>  	
-        <div class="col-lg-2 idresult"> 
-            <% ink.forEach(function(foundid) { %>   
-                <div class="col-lg-12 bucket-name"><%= ink.foundid %></div>    
-            <% }) %>    
-        </div>  
-        <form class="col-xl-12" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" > 
-            <div class=" checkbox-inline press-buttons">
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-radio" name="ink[location]" type="radio" value="NTMD" ><%= locationArray[0] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-radio" name="ink[location]" type="radio" value="SHLF" ><%= locationArray[1] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="C218" ><%= locationArray[2] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="C312" ><%= locationArray[3] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="C318" ><%= locationArray[4] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="GA10" ><%= locationArray[5] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="GA18" ><%= locationArray[6] %>
-                </label>
-
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="SMPL" ><%= locationArray[7] %>
-                </label>
-            
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="SP10" ><%= locationArray[8] %>
-                </label>
-
-                <label class="btn btn-secondary">
-                    <input id="select" class="select-checkbox" name="ink[location]" type="checkbox" value="SP14" ><%= locationArray[9] %>
-                </label>
-                
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
+    
 
     <!-- PRESSES -->
     <div class="row">
