@@ -65,9 +65,9 @@ $( '.flexsearch--form' ).each(function(){
   this.reset();
 });
 
-// $( function() {
-//   $( ".sortable" ).sortable({
-//     placeholder: "ui-state-highlight"
-//   });
-//   $( ".sortable" ).disableSelection();
-// } );
+$( function() {
+  $( ".sortable" ).sortable({
+    placeholder: "ui-state-highlight"
+  });
+  $( ".sortable" ).disableSelection();
+} );
