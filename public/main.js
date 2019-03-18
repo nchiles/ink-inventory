@@ -35,8 +35,9 @@ $('.searchsubmit').click(function(e){
   if (query == null || query == undefined || query == "") {
     return;
   } else {
-    $('#searchresults').load('/?search=' + query);
-    $("#searchresults").css('border', 'none');
+    $('.search-result-placeholder').load('/?search=' + query);
+    $('.search-result-placeholder').css('border', 'none');
+    $('.search-result-placeholder').removeClass('container');
     $('#ui-id-1').css('display', 'none');
   }
 });

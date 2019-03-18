@@ -2,8 +2,10 @@ body {
     background: #000
 }
 
-h1 {
+#home {
     margin-top: 2rem;
+    color: gray;
+    text-decoration: none;
 }
 
 input:focus {
@@ -15,10 +17,11 @@ input:focus {
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid;
 }
 
 .searchform {
-    /* display: inline-block; */
     flex: 1 0 0;
     display: flex;
     flex-direction: row;
@@ -44,30 +47,45 @@ input:focus {
     margin-right: 1rem;
 }
 
-#searchresults {
-    flex: 5 0 0;
-    /* display: flex; */
-    /* flex-direction: column; */
-    border: 1px solid #333333;
-    border-radius: .25rem;
-    height: 10rem;
+.search-result-placeholder { 
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.result-placeholder {
-    margin: 4rem;
-    text-align: center;
-}
-
-.search-result-after {
-    border: 1px solid #333333;
-    border-radius: .25rem;
+    /* border: 1px solid #333333; */
+    /* border-radius: .25rem; */
     min-height: 10rem;
+}
+
+.bucket-name-placeholder {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+#placeholder-button {
+    display: inline-block;
+    border-radius: .25rem;
+    background: #151515;
+    border: 1px solid #000000;
+    color: #3a3a3a;
+    height: 2.4rem;
+    width: 80px;
+    line-height: 2.4rem;
+    text-align: center;
+    cursor: pointer; 
+}
+
+.search-result {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid #333333; */
+    /* border-radius: .25rem; */
+    min-height: 10rem;
 }
 
 .bucket-name {
@@ -77,11 +95,6 @@ input:focus {
     color: #ffffff;
     line-height: 1;
 }
-
-.btn {
-    vertical-align: unset; 
-}
-/* keeps seach section div at correct height  */
 
 .ui-widget.ui-widget-content {
     border: unset !important;
@@ -125,7 +138,6 @@ input:focus {
     color: #3a3a3a;
     height: 2.4rem;
     width: 80px;
-    /* margin-left: -4px; */
     line-height: 2.4rem;
     text-align: center;
     cursor: pointer;
@@ -256,12 +268,15 @@ label {
 }
 
 .submit-location {
+    display: inline-block;
     color: black;
     border: 1px solid black;
     background: white;
     border-radius: .25rem;
     font-size: 15px;
     padding: .4rem .5rem;
+    height: 2.4rem;
+    width: 80px;
 }
 
 .submit-location:hover {

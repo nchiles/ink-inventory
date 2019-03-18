@@ -10,45 +10,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 
     <div class="row">
         <div class="col-xl-12">
-            <a href="/"><h1>Vector Ink Inventory</h1></a>
+            <a href="/">
+                <h1 id="home">Vector Ink Inventory</h1>
+            </a>
         </div>
     </div>
 
     <!-- SEARCH INKS -->
-    <!-- <div class="row flexsearch search-section">
-		<div class="row flexsearch--wrapper">
-			<form class="flexsearch--form" action="/" method="GET">
-				<div class="flexsearch--input-wrapper searchbox">
-					<input id="autocompleteInks" class="flexsearch--input searchbox" type="text" name="search" placeholder="search">
-				</div>
-				<input class="flexsearch--submit searchsubmit" type="submit" value="&#10140;"/>
-            </form>
-        </div> 
-        <div id="searchresults" class="row"></div>
-    </div> -->
-
-    <!-- SEARCH INKS -->
     <div class="search-section">
         <form action="/" method="GET" class="searchform">
-            <!-- <div class="searchfield"> -->
-                <input id="autocompleteInks" type="text" name="search" placeholder="" class="searchbox">
-                <input type="submit" class="searchsubmit" value="">
-            <!-- </div> -->
+            <input id="autocompleteInks" type="text" name="search" placeholder="" class="searchbox">
+            <input type="submit" class="searchsubmit" value="">
         </form>
-        <div id="searchresults"><div class="result-placeholder">use the search field to the left to locate an ink</div></div>
+        <div class="container search-result-placeholder">
+            <div class="bucket-name-placeholder">search for an ink</div>
+            <div class="location-selector">
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div> 
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>    
+                <div id="placeholder-button"></div>
+                <div id="placeholder-button"></div>
+            </div>
+        </div>
     </div>  
 
-    <!-- PRESSES -->
-    <!-- <div class="row">
-        <div class="col-xl-12">
-            <h3>Inks In Use</h3>
-        </div>
-    </div> -->
-
+    <!-- INKS IN USE -->
     <div class="row inuse">
         <div id="press-col" class="col c218-col">
             <div id="c218-col-header" class="press-header">C218</div>
