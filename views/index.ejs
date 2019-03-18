@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
         <div class="col-xl-12">
@@ -19,7 +19,7 @@
     </div>
 
     <!-- SEARCH INKS -->
-    <div class="row flexsearch search-section">
+    <!-- <div class="row flexsearch search-section">
 		<div class="row flexsearch--wrapper">
 			<form class="flexsearch--form" action="/" method="GET">
 				<div class="flexsearch--input-wrapper searchbox">
@@ -29,7 +29,18 @@
             </form>
         </div> 
         <div id="searchresults" class="row"></div>
-    </div>
+    </div> -->
+
+    <!-- SEARCH INKS -->
+    <div class="search-section">
+        <form action="/" method="GET" class="searchform">
+            <!-- <div class="searchfield"> -->
+                <input id="autocompleteInks" type="text" name="search" placeholder="" class="searchbox">
+                <input type="submit" class="searchsubmit" value="">
+            <!-- </div> -->
+        </form>
+        <div id="searchresults"><div class="result-placeholder">use the search field to the left to locate an ink</div></div>
+    </div>  
 
     <!-- PRESSES -->
     <!-- <div class="row">
@@ -38,7 +49,7 @@
         </div>
     </div> -->
 
-    <div class="row">
+    <div class="row inuse">
         <div id="press-col" class="col c218-col">
             <div id="c218-col-header" class="press-header">C218</div>
             <ul class="sortable">
@@ -47,6 +58,7 @@
                         <li class="ui-state-default c218-ink"><%= ink.ink %></li>
                     <% } %>
                 <% }) %>
+                <!-- <li><input class="ui-state-default"></li> -->
             </ul>
         </div>
         <div id="press-col" class="col c312-col">

@@ -1,66 +1,67 @@
 
 
-    <div class="container col-xl-12"> 
+    <div class="container-fluid search-result-after"> 
         <% if(noMatch !== null) { %>
             <h3><%= noMatch %></h3>
         <% } else { %>
             <% ink.forEach(function(ink) { %>
-                <form class="row" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" > 
-                    <div class="col bucket-name"><%= ink.ink %></div>
+                <form class="" action="/<%= ink._id %>?_method=PUT" method="POST" value="<%= ink.location %>" > 
+                    <div class="bucket-name"><%= ink.ink %></div>
 
                     <div class="location-selector">
-                        <span id="ntmd-button">
+                        <div id="ntmd-button">
                             <input type="radio" id="select-ntmd" class="select-radio" name="ink[location]" value="NTMD" <%= ink.location == 'NTMD' ? 'checked' : ''%> />
                             <label for="select-ntmd"><%= locationArray[0] %></label>
-                        </span>
+                        </div>
                         
-                        <span id="shlf-button">
+                        <div id="shlf-button">
                             <input type="radio" id="select-shlf" class="select-radio" name="ink[location]" value="SHLF" <%= ink.location == 'SHLF' ? 'checked' : ''%> />
                             <label for="select-shlf"><%= locationArray[1] %></label>
-                        </span>
+                        </div>
                         
-                        <span id="c218-button">
+                        <div id="c218-button">
                             <input type="checkbox" id="select-c218" class="select-checkbox" name="ink[location]" value="C218" <%= ink.location.includes('C218') ? 'checked' : ''%> />
                             <label for="select-c218"><%= locationArray[2] %></label>
-                        </span>
+                        </div>
                     
-                        <span id="c312-button">  
+                        <div id="c312-button">  
                             <input type="checkbox" id="select-c312" class="select-checkbox" name="ink[location]" value="C312" <%= ink.location.includes('C312') ? 'checked' : ''%> />
                             <label for="select-c312"><%= locationArray[3] %></label>
-                        </span>
+                        </div>
 
-                        <span id="c318-button">  
+                        <div id="c318-button">  
                             <input type="checkbox" id="select-c318" class="select-checkbox" name="ink[location]" value="C318" <%= ink.location.includes('C318') ? 'checked' : ''%> />
                             <label for="select-c318"><%= locationArray[4] %></label>
-                        </span>
+                        </div>
 
-                        <span id="ga10-button">
+                        <div id="ga10-button">
                             <input type="checkbox" id="select-ga10" class="select-checkbox" name="ink[location]" value="GA10" <%= ink.location.includes('GA10') ? 'checked' : ''%> />
                             <label for="select-ga10"><%= locationArray[5] %></label>
-                        </span>
+                        </div>
 
-                        <span id="ga18-button">
+                        <div id="ga18-button">
                             <input type="checkbox" id="select-ga18" class="select-checkbox" name="ink[location]" value="GA18" <%= ink.location.includes('GA18') ? 'checked' : ''%> />
                             <label for="select-ga18"><%= locationArray[6] %></label>
-                        </span>
+                        </div>
 
-                        <span id="smpl-button">
+                        <div id="smpl-button">
                             <input type="checkbox" id="select-smpl" class="select-checkbox" name="ink[location]" value="SMPL" <%= ink.location.includes('SMPL') ? 'checked' : ''%> />
                             <label for="select-smpl"><%= locationArray[7] %></label>
-                        </span>
+                        </div>
 
-                        <span id="sp10-button">
+                        <div id="sp10-button">
                             <input type="checkbox" id="select-sp10" class="select-checkbox" name="ink[location]" value="SP10" <%= ink.location.includes('SP10') ? 'checked' : ''%> />
                             <label for="select-sp10"><%= locationArray[8] %></label>
-                        </span>
+                        </div>
                           
-                        <span id="sp14-button">    
+                        <div id="sp14-button">    
                             <input type="checkbox" id="select-sp14" class="select-checkbox" name="ink[location]" value="SP14" <%= ink.location.includes('SP14') ? 'checked' : ''%> />
                             <label for="select-sp14"><%= locationArray[9] %></label>
-                        </span>
+                        </div>
 
                         <button class="submit-location" type="submit">Submit</button>
-                        </div>
+                        <!-- <a class="btn btn-danger btn-sm" href="delete/<%= ink.id %>" role="button" >delete</a> -->
+                    </div>
                 </form>
             <% }) %>
         <% }; %>
