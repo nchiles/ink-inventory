@@ -16,9 +16,11 @@ var port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs')
 
-mongoose.connect('mongodb://localhost:27017/inkDB', {
-  useNewUrlParser: true
-})
+// mongoose.connect('mongodb://localhost:27017/inkDB', {
+//   useNewUrlParser: true
+// })
+
+mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true });
 
 app.listen(port);
 console.log('Server running on port ' + port);
