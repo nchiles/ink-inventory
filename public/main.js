@@ -11,6 +11,8 @@ $( function() {
   });
 });
 
+
+
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-checkbox").click(function(){
@@ -28,6 +30,8 @@ $(".select-radio").click(function(){
   })
 });
 
+
+
 //LOAD SEARCH RESULTS
 $('.searchsubmit').click(function(e){
   var query = $("#autocompleteInks").val().replace(/ /g, '+')
@@ -37,15 +41,14 @@ $('.searchsubmit').click(function(e){
   } else {
     $('.search-result-placeholder').load('/?search=' + query);
     $('.search-result-placeholder').css('border', 'none');
-    $('.search-result-placeholder').removeClass('container');
     $('#ui-id-1').css('display', 'none');
   }
 });
 
  //CLEAR SEACHBOX
-$( '.searchform' ).each(function(){
-  this.reset();
-});
+// $( '.searchform' ).each(function(){
+//   this.reset();
+// });
 
 $( function() {
   $( ".sortable" ).sortable({
@@ -53,3 +56,16 @@ $( function() {
   });
   $( ".sortable" ).disableSelection();
 } );
+
+$(".update-form").click(function() {
+  var inkid = $(this).parent().parent().parent().attr('data-id');
+  $.ajax({
+    type: "POST",
+    url: '/' + inkid + '?_method=PUT',
+    data: $(this).parent().parent().parent().serialize(),
+    success: function() {
+    }
+  });
+  // location.reload();
+  // $('.search-result-placeholder').load('/?search=' + '123');
+});

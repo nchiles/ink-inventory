@@ -1,0 +1,256 @@
+body {
+    background: #000
+}
+
+#home {
+    margin-top: 2rem;
+    color: gray;
+    text-decoration: none;
+}
+
+input:focus {
+    outline: none; 
+}
+
+.search-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 10rem;
+}
+
+.bucket-name {
+    font-size: 4rem;
+    text-align: left;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.ui-widget.ui-widget-content {
+    border: unset !important;
+    border: 1px solid #aaaaaa;
+    background: #00000087;
+    color: #8e8e8e;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    padding: 3px 1em 3px 1.1em !important;
+}
+
+.ui-menu .ui-menu-item-wrapper:hover {
+    background: transparent !important;
+    color: white;
+    border: none;
+}
+
+.ui-widget {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px !important;
+}
+
+
+/* start location checkboxes */
+.location-selector {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.location-selector input {
+    display: none!important;
+}
+
+.offpress-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.onpress-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+  
+.location-selector input[type=checkbox] + label,  input[type=radio] + label {
+    display: inline-block;
+    border-radius: .25rem;
+    background: #151515;
+    border: 1px solid #000000;
+    color: #3a3a3a;
+    height: 2.4rem;
+    width: 80px;
+    line-height: 2.4rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* start ntmd-button effects */
+#ntmd-button input[type=radio]:checked + label {
+    background: #494949;
+    color: #ffffff;
+}
+#ntmd-button input[type=radio]:checked + label:hover {
+    background: #313131;
+    color: #ffffff;
+}
+#ntmd-button input[type=radio]:checked + label:active {
+    background: #222222;
+    color: #ffffff;
+}
+#ntmd-button input[type=radio]:not(:checked) + label:hover {
+    border: 1px solid #494949;
+    color: #313131;
+}
+#ntmd-button input[type=radio]:not(:checked) + label:active {
+    border: 1px solid #222222;
+    color: #222222;
+}
+/* end ntmd-button effects */
+
+#shlf-button input[type=radio]:checked + label {
+    background: #a7a7a7;
+    color: #ffffff;
+}
+#shlf-button input[type=radio]:not(:checked) + label:hover {
+    border: 1px solid #a7a7a7;
+    color: #a7a7a7;
+}
+
+#c218-button input[type=checkbox]:checked + label {
+    background: #7b63d2;
+    color: #ffffff;
+}
+#c218-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #7b63d2;
+    color: #7b63d2;
+}
+
+#c312-button input[type=checkbox]:checked + label {
+    background: #3d8ce2;
+    color: #ffffff;
+}
+#c312-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #3d8ce2;
+    color: #3d8ce2;
+}
+
+#c318-button input[type=checkbox]:checked + label {
+    background: #3cb786;
+    color: #ffffff;
+}
+#c318-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #3cb786;
+    color: #3cb786;
+}
+
+#ga18-button input[type=checkbox]:checked + label {
+    background: #d4ca53;
+    color: #ffffff;
+}
+#ga18-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #d4ca53;
+    color: #d4ca53;
+}
+
+#manl-button input[type=checkbox]:checked + label {
+    background: #46aa27;
+    color: #ffffff;
+}
+#manl-button input[type=checkbox]:checked + label:hover {
+    background: #589c44;
+    color: #ffffff;
+}
+#manl-button input[type=checkbox]:checked + label:active {
+    background: #3a8323;
+    color: #ffffff;
+}
+#manl-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #46aa27;
+    color: #46aa27;
+}
+#manl-button input[type=checkbox]:not(:checked) + label:active {
+    border: 1px solid #3a8323;
+    color: #3a8323;
+}
+
+#smpl-button input[type=checkbox]:checked + label {
+    background: #ef8a38;
+    color: #ffffff;
+}
+#smpl-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #ef8a38;
+    color: #ef8a38;
+}
+
+#sp10-button input[type=checkbox]:checked + label {
+    background: #b9323c;
+    color: #ffffff;
+}
+#sp10-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #b9323c;
+    color: #b9323c;
+}
+
+#sp14-button input[type=checkbox]:checked + label {
+    background: #bd60ac;
+    color: #ffffff;
+}
+#sp14-button input[type=checkbox]:not(:checked) + label:hover {
+    border: 1px solid #bd60ac;
+    color: #bd60ac;
+}
+
+.delete {
+    color: red;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+label {
+    margin-bottom: unset;
+}
+
+@media screen and (max-width: 600px) {
+    .bucket-name {
+        font-size: 3rem;
+        text-align: left;
+        font-weight: 700;
+        color: #ffffff;
+        margin-top: 2rem;
+    }
+    .location-selector input[type=checkbox] + label, input[type=radio] + label {
+        display: inline-block;
+        border-radius: .25rem;
+        background: #151515;
+        border: 1px solid #000000;
+        color: #3a3a3a;
+        height: 3rem;
+        width: 44vw;
+        line-height: 3rem;
+        text-align: center;
+        cursor: pointer;
+        margin: 3px;
+    }
+    /* .header {
+        background: #000;
+        position: fixed;
+    } */
+    #home {
+        font-size: 150%;
+        padding-bottom: 5px;
+    }
+    /* form {
+        margin-top: 7rem;
+    } */
+    .submit-location {
+        background: #3d8ce2;
+    }
+}
+
+.submit-duplicate {
+    margin-bottom: 3rem;
+}
+

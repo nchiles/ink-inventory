@@ -20,6 +20,8 @@ mongoose.connect('mongodb://localhost:27017/inkDB', {
   useNewUrlParser: true
 })
 
+// mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true });
+
 app.listen(port);
 console.log('Server running on port ' + port);
 
@@ -30,8 +32,8 @@ var locationArray = [
     'C218',
     'C312',
     'C318',
-    'GA10',
     'GA18',
+    'MANL',
     'SMPL',
     'SP10', 
     'SP14'
@@ -57,7 +59,7 @@ app.get("/", function(req, res){
         if(foundInk.length < 1) {
           noMatch = "No match, please try again.";
       }
-        res.render('new-index', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
+        res.render('search-results', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
       }
     });
   } else {
@@ -72,32 +74,6 @@ app.get("/", function(req, res){
   }
 });
 
-// app.get("/", function(req, res){
-//   // FIND ALL INKS FROM DB
-//   Ink.find({}, function(err, allInks){
-//     if(err){
-//       console.log(err);
-//     } else {
-//       res.render("index", {ink: allInks, locationArray: locationArray })
-//     }
-//   });
-// })
-
-// app.get("/", function(req, res) {
-//   // FIND ONE INK FROM DB
-//   var noMatch = null;
-//   Ink.findOne({ink: req.query.search}, function(err, foundInk){
-//     if(err){
-//       console.log(err);
-//     } else 
-//       if(!foundInk) {
-//         noMatch = "No match, please try again.";
-//       }
-
-//       res.render("new-index", {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
-//   });
-// });
-
 //LIST OF STRINGS FOR AUTOCOMPLETE ON SEARCH BOX
 app.get('/inklist', function(req, res){
 	Ink.distinct("ink", function(err, allInks) {
@@ -110,6 +86,10 @@ app.get('/inklist', function(req, res){
 });
 
 //ADD INK TO DATABASE
+app.get('/add-ink', function(req, res){
+  res.render("add-ink", {locationArray: locationArray}); 
+});
+
 app.post('/inventory', (req, res) => {
   var ink = req.body.ink
   var location = req.body.location
@@ -125,11 +105,11 @@ app.post('/inventory', (req, res) => {
     } else {
       console.log(result);
     } 
-    res.redirect('/')
+    res.redirect('/all-inks')
   })
 })
 
-// UPDATE LOCATION
+// UPDATE LOCATION FROM HOME
 app.put('/:id', function(req, res){
 	Ink.findByIdAndUpdate(req.params.id, req.body.ink, function(err, updatedInk){
 		if(err) {
@@ -151,7 +131,48 @@ app.get('/delete/:id', function(req, res){
     else {
       console.log("Ink Deleted")
     }
-    res.redirect('/');
+    res.redirect("/all-inks");
   });
 });	  
-  
+
+//GET ALL INKS IN DATABASE
+app.get("/all-inks", function(req, res){
+  Ink.find({}, function(err, allInks){
+    if(err){
+        console.log(err);
+    } else {
+      res.render("all-inks", { ink: allInks, locationArray: locationArray });
+    }
+  }).sort({"ink": 1});
+});
+
+// UPDATE LOCATION FROM ALL-INKS
+app.put('/all-inks/:id', function(req, res){
+	Ink.findByIdAndUpdate(req.params.id, req.body.ink, function(err, updatedInk){
+		if(err) {
+			res.send("error");
+		} else {
+      res.redirect("/all-inks", "edit", {ink: updatedInk});
+      console.log("Location Updated")
+		}
+	});
+});
+
+//DUPLICATE INK
+app.post('/inventory', (req, res) => {
+  var ink = req.body.ink
+
+  var newInk = {
+    ink: ink
+  }
+
+  Ink.create(newInk, function(err, result) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(result);
+    } 
+    res.redirect('/all-inks')
+  })
+})
+

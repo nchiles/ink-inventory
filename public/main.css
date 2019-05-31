@@ -2,15 +2,99 @@ body {
     background: #000
 }
 
-#home {
-    margin-top: 2rem;
-    color: gray;
-    text-decoration: none;
-}
-
 input:focus {
     outline: none; 
 }
+
+/* NAVBAR */
+  .navbar {
+    font-size: 22px;
+    /* background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%); */
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    padding-bottom: 10px;
+  }
+  
+  .main-nav {
+    list-style-type: none;
+    display: none;
+  }
+  
+  .nav-links,
+  .logo {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+/* override reboot.scss */
+ol, ul, dl {
+    margin-top: unset;
+    margin-bottom: unset;
+}
+a:hover {
+    text-decoration: unset;
+}
+/* finish override */
+  
+  .main-nav li {
+    text-align: center;
+    margin: 15px auto;
+  }
+  
+  .logo {
+    display: inline-block;
+    font-size: 28px;
+  }
+  
+  .navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+  }
+  
+  .active {
+    display: block;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 0;
+      height: 70px;
+      align-items: center;
+    }
+  
+    .main-nav {
+      display: flex;
+      margin-right: 30px;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  
+    .main-nav li {
+      margin: 0;
+    }
+  
+    .nav-links {
+      margin-left: 40px;
+    }
+  
+    .logo {
+      margin-top: 0;
+    }
+  
+    .navbar-toggle {
+      display: none;
+    }
+  
+    .logo:hover,
+    .nav-links:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
 
 /* START SEARCH RESULTS SECTION */
 .search-section {
@@ -33,6 +117,12 @@ input:focus {
     border: none;
     border-radius: 25px;
     padding: .5rem 0 .5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.searchbox:hover, .searchbox:focus {
+    background-color: white;
+    cursor: alias;
 }
 
 .searchsubmit {
@@ -58,7 +148,7 @@ input:focus {
 }
 
 .bucket-name-placeholder {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
     font-weight: 700;
     color: #333;
@@ -80,11 +170,9 @@ input:focus {
 
 .search-result {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid #333333; */
-    /* border-radius: .25rem; */
     min-height: 10rem;
 }
 
@@ -176,91 +264,91 @@ input:focus {
 }
 
 #c218-button input[type=checkbox]:checked + label {
-    background: #564092;
+    background: #7b63d2;
     color: #ffffff;
 }
 #c218-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #564092;
-    color: #564092;
+    border: 1px solid #7b63d2;
+    color: #7b63d2;
 }
 
 #c312-button input[type=checkbox]:checked + label {
-    background: #1463b5;
+    background: #3d8ce2;
     color: #ffffff;
 }
 #c312-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #1463b5;
-    color: #1463b5;
+    border: 1px solid #3d8ce2;
+    color: #3d8ce2;
 }
 
 #c318-button input[type=checkbox]:checked + label {
-    background: #368f80;
+    background: #3cb786;
     color: #ffffff;
 }
 #c318-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #368f80;
-    color: #368f80;
+    border: 1px solid #3cb786;
+    color: #3cb786;
 }
 
 
-/* start ga10-button effects */
-#ga10-button input[type=checkbox]:checked + label {
+/* start manl-button effects */
+#manl-button input[type=checkbox]:checked + label {
     background: #46aa27;
     color: #ffffff;
 }
-#ga10-button input[type=checkbox]:checked + label:hover {
+#manl-button input[type=checkbox]:checked + label:hover {
     background: #589c44;
     color: #ffffff;
 }
-#ga10-button input[type=checkbox]:checked + label:active {
+#manl-button input[type=checkbox]:checked + label:active {
     background: #3a8323;
     color: #ffffff;
 }
-#ga10-button input[type=checkbox]:not(:checked) + label:hover {
+#manl-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #46aa27;
     color: #46aa27;
 }
-#ga10-button input[type=checkbox]:not(:checked) + label:active {
+#manl-button input[type=checkbox]:not(:checked) + label:active {
     border: 1px solid #3a8323;
     color: #3a8323;
 }
-/* end ga10-button effects */
+/* end manl-button effects */
 
 
 #ga18-button input[type=checkbox]:checked + label {
-    background: #dece0d;
+    background: #d4ca53;
     color: #ffffff;
 }
 #ga18-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #dece0d;
-    color: #dece0d;
+    border: 1px solid #d4ca53;
+    color: #d4ca53;
 }
 
 #smpl-button input[type=checkbox]:checked + label {
-    background: #f7770e;
+    background: #ef8a38;
     color: #ffffff;
 }
 #smpl-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #f7770e;
-    color: #f7770e;
+    border: 1px solid #ef8a38;
+    color: #ef8a38;
 }
 
 #sp10-button input[type=checkbox]:checked + label {
-    background: #cf1b1b;
+    background: #b9323c;
     color: #ffffff;
 }
 #sp10-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #cf1b1b;
-    color: #cf1b1b;
+    border: 1px solid #b9323c;
+    color: #b9323c;
 }
 
 #sp14-button input[type=checkbox]:checked + label {
-    background: #c952ce;
+    background: #bd60ac;
     color: #ffffff;
 }
 #sp14-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #c952ce;
-    color: #c952ce;
+    border: 1px solid #bd60ac;
+    color: #bd60ac;
 }
 
 label {
@@ -305,79 +393,79 @@ h3 {
 }
 
 #c218-col-header {
-    color: #564092;
+    color: #7b63d2;
 }
 
 .c218-ink {
-    color: #564092 !important;
-    border: 1px solid #564092 !important;
+    color: #7b63d2 !important;
+    border: 1px solid #7b63d2 !important;
 }
 
 #c312-col-header {
-    color: #0058b3;
+    color: #3d8ce2;
 }
 
 .c312-ink {
-    color: #0058b3 !important;
-    border: 1px solid #0058b3 !important;
+    color: #3d8ce2 !important;
+    border: 1px solid #3d8ce2 !important;
 }
 
 #c318-col-header {
     font-weight: 600;
-    color: #368f80;
+    color: #3cb786;
 }
 
 #c318-col-header {
-    color: #368f80;
+    color: #3cb786;
 }
 
 .c318-ink {
-    color: #368f80 !important;
-    border: 1px solid #368f80 !important;
+    color: #3cb786 !important;
+    border: 1px solid #3cb786 !important;
 }
 
-#ga10-col-header {
+#manl-col-header {
     color: #46aa27;
 }
-.ga10-ink {
+.manl-ink {
     color: #46aa27 !important;
     border: 1px solid #46aa27 !important;
 }
 
 #ga18-col-header {
     font-weight: 600;
-    color: #dece0d;
+    color: #d4ca53;
 }
 .ga18-ink {
-    color: #dece0d !important;
-    border: 1px solid #dece0d !important;
+    color: #d4ca53 !important;
+    border: 1px solid #d4ca53 !important;
 }
 
 #smpl-col-header {
     font-weight: 600;
-    color: #f7770e;
+    color: #ef8a38;
 }
 .smpl-ink {
-    color: #f7770e !important;
-    border: 1px solid #f7770e !important;
+    color: #ef8a38 !important;
+    border: 1px solid #ef8a38 !important;
 }
 
 #sp10-col-header {
     font-weight: 600;
-    color: #cf1b1b;
+    color: #b9323c;
 }
 .sp10-ink {
-    color: #cf1b1b !important;
-    border: 1px solid #cf1b1b !important;
+    color: #b9323c !important;
+    border: 1px solid #b9323c !important;
 }
 
 #sp14-col-header {
     font-weight: 600;
-    color: #c952ce;
+    color: #bd60ac;
 }
 .sp14-ink {
-    color: #c952ce !important;
-    border: 1px solid #c952ce !important;
+    color: #bd60ac !important;
+    border: 1px solid #bd60ac !important;
 }
 
 .sortable { 

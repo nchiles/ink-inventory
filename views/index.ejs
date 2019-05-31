@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Vector Ink Inventory</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -12,13 +13,20 @@
 <body>
 <div class="container">
 
-    <div class="row">
-        <div class="col-xl-12">
-            <a href="/">
-                <h1 id="home">Vector Ink Inventory</h1>
-            </a>
-        </div>
-    </div>
+    <nav class="navbar">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <i class="fas fa-bars"></i>
+        </span>
+        <a href="/" class="logo">Vector Ink</a>
+        <ul class="main-nav" id="js-menu">
+            <li>
+                <a href="/add-ink" class="nav-links">Add Ink</a>
+            </li>
+            <li>
+                <a href="/all-inks" class="nav-links">All Inks</a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- SEARCH INKS -->
     <div class="search-section">
@@ -27,19 +35,21 @@
             <input type="submit" class="searchsubmit" value="">
         </form>
         <div class="container search-result-placeholder">
-            <div class="bucket-name-placeholder">search for an ink</div>
-            <div class="location-selector">
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div> 
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>    
-                <div id="placeholder-button"></div>
-                <div id="placeholder-button"></div>
+            <div class="container search-result">
+                <div class="bucket-name-placeholder">search for an ink</div>
+                <div class="location-selector">
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div> 
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div>
+                    <div id="placeholder-button"></div>    
+                    <div id="placeholder-button"></div>
+                    <!-- <div id="placeholder-button"></div> -->
+                </div>
             </div>
         </div>
     </div>  
@@ -77,22 +87,22 @@
                 <% }) %>
             </ul>
         </div>
-        <div id="press-col" class="col ga10-col">
-            <div id="ga10-col-header" class="press-header">GA10</div>
-            <ul class="sortable">
-                <% ink.forEach(function(ink) { %>
-                    <% if (ink.location.includes("GA10")) { %>
-                        <li class="ui-state-default ga10-ink"><%= ink.ink %></li>
-                    <% } %>
-                <% }) %>
-            </ul>
-        </div>
         <div id="press-col" class="col ga18-col">
             <div id="ga18-col-header" class="press-header">GA18</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
                     <% if (ink.location.includes("GA18")) { %>
                         <li class="ui-state-default ga18-ink"><%= ink.ink %></li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+        <div id="press-col" class="col manl-col">
+            <div id="manl-col-header" class="press-header">MANL</div>
+            <ul class="sortable">
+                <% ink.forEach(function(ink) { %>
+                    <% if (ink.location.includes("MANL")) { %>
+                        <li class="ui-state-default manl-ink"><%= ink.ink %></li>
                     <% } %>
                 <% }) %>
             </ul>
