@@ -88,7 +88,7 @@ app.get('/search', (req, res, next) => {
     console.log(foundInk);
     if (err)
       return res.status(500).json({ error: err.message });
-    res.json({ data: foundInk });
+    res.json({ data: foundInk, locationArray: locationArray });
   });
 });
 

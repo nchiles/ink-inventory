@@ -1,15 +1,15 @@
 // autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
+// var xhReq = new XMLHttpRequest();
+// xhReq.open("GET", "/inklist", false);
+// xhReq.send(null);
+// var jsonObject = JSON.parse(xhReq.responseText);
 
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks
-  });
-});
+// $( function() {
+//   var availableInks = jsonObject;
+//   $( "#search" ).autocomplete({
+//     source: availableInks
+//   });
+// });
 
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
@@ -30,45 +30,83 @@ $(".select-radio").click(function(){
 
 $('#searchform').submit(function(e){
   e.preventDefault();
+
+  $("#resultloc0").html(''), 
+  $("#resultloc1").html(''), 
+  $("#resultloc2").html(''),
+  $("#resultloc3").html(''),
+  $("#resultloc4").html(''),
+  $("#resultloc5").html(''),
+  $("#resultloc6").html(''),
+  $("#resultloc7").html(''),
+  $("#resultloc8").html(''),
+  $("#resultloc9").html(''),
+  $('input[type="checkbox"]').prop('checked', false);
+  $('input[type="radio"]').prop('checked', false);
+  
   inkInput = $("#search").val().replace(/ /g, '+')
+
   $.ajax({
     url: "/search?q=" + inkInput
   }).done(function(r) {
+    
+    //bucket name
     const ink = r.data;
-
-    if (ink)
-      $("#result").html(r.data.ink) && 
-
-      $("#resultloc0").html(r.data.location[0]) && 
-      $("#resultloc1").html(r.data.location[1]) && 
-      $("#resultloc2").html(r.data.location[2]) &&
-      $("#resultloc3").html(r.data.location[3]) &&
-      $("#resultloc4").html(r.data.location[4]) &&
-      $("#resultloc5").html(r.data.location[5]) &&
-      $("#resultloc6").html(r.data.location[6]) &&
-      $("#resultloc7").html(r.data.location[7]) &&
-      $("#resultloc8").html(r.data.location[8]) &&
-      $("#resultloc9").html(r.data.location[9]);
-      
-      if ($("#resultloc0").html() == ("C312")) {
-        // alert("hello")
-        $('#select-c312').prop('checked', true);
+    
+    if (ink) {
+      $("#result").html(r.data.ink);
+       //current location(s)
+      var locArray = [
+        $("#resultloc0").html(r.data.location[0]).html(), 
+        $("#resultloc1").html(r.data.location[1]).html(), 
+        $("#resultloc2").html(r.data.location[2]).html(),
+        $("#resultloc3").html(r.data.location[3]).html(),
+        $("#resultloc4").html(r.data.location[4]).html(),
+        $("#resultloc5").html(r.data.location[5]).html(),
+        $("#resultloc6").html(r.data.location[6]).html(),
+        $("#resultloc7").html(r.data.location[7]).html(),
+        $("#resultloc8").html(r.data.location[8]).html(),
+        $("#resultloc9").html(r.data.location[9]).html()
+      ]
+  
+      for (var i = 0; i < locArray.length; i++) {     //loop through current locations of ink 
+        if (locArray[i] == 'NTMD') {                  //if locArray is press 
+          $('#select-ntmd').prop('checked', true);    //check checkbox
+        } 
+        if (locArray[i] == 'SHLF') {            
+          $('#select-shlf').prop('checked', true); 
+        } 
+        if (locArray[i] == 'C218') {            
+          $('#select-c218').prop('checked', true); 
+        } 
+        if (locArray[i] == "C312") {           
+          $('#select-c312').prop('checked', true);
+        }
+        if (locArray[i] == "C318") {           
+          $('#select-c318').prop('checked', true);
+        }
+        if (locArray[i] == "GA18") {           
+          $('#select-ga18').prop('checked', true);
+        }
+        if (locArray[i] == "MANL") {           
+          $('#select-manl').prop('checked', true);
+        }
+        if (locArray[i] == "SMPL") {           
+          $('#select-smpl').prop('checked', true);
+        }
+        if (locArray[i] == "SP10") {           
+          $('#select-sp10').prop('checked', true);
+        }
+        if (locArray[i] == "SP14") {           
+          $('#select-sp14').prop('checked', true);
+        }
       }
-    else
+    } else
       $("#result").html('No match found');
   }).fail(function(err) {
     console.error(err); 
-  });;
+  }); 
 });
-
-$(".test").click(function(){
-  // alert($("#resultloc0").html());
-  if ($("#resultloc0").html() == ("C312")) {
-    // alert("hello")
-    $('#select-c312').prop('checked', true);
-  }
-});
-
 
  //CLEAR SEACHBOX
 // $( '.searchform' ).each(function(){
