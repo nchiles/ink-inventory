@@ -49,6 +49,11 @@ $('#searchform').submit(function(e){
       $("#resultloc7").html(r.data.location[7]) &&
       $("#resultloc8").html(r.data.location[8]) &&
       $("#resultloc9").html(r.data.location[9]);
+      
+      if ($("#resultloc0").html() == ("C312")) {
+        // alert("hello")
+        $('#select-c312').prop('checked', true);
+      }
     else
       $("#result").html('No match found');
   }).fail(function(err) {
@@ -57,12 +62,13 @@ $('#searchform').submit(function(e){
 });
 
 $(".test").click(function(){
-  console.log($("#resultloc0").html());
-  if ($("#resultloc0").html == ("C312")) {
-    
-    $('input[type="checkbox"]').prop('checked', true);
+  // alert($("#resultloc0").html());
+  if ($("#resultloc0").html() == ("C312")) {
+    // alert("hello")
+    $('#select-c312').prop('checked', true);
   }
 });
+
 
  //CLEAR SEACHBOX
 // $( '.searchform' ).each(function(){
