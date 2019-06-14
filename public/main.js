@@ -6,12 +6,10 @@ var jsonObject = JSON.parse(xhReq.responseText);
 
 $( function() {
   var availableInks = jsonObject;
-  $( "#autocompleteInks" ).autocomplete({
+  $( "#search" ).autocomplete({
     source: availableInks
   });
 });
-
-
 
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
@@ -30,18 +28,39 @@ $(".select-radio").click(function(){
   })
 });
 
-
-
-//LOAD SEARCH RESULTS
-$('.searchsubmit').click(function(e){
-  var query = $("#autocompleteInks").val().replace(/ /g, '+')
+$('#searchform').submit(function(e){
   e.preventDefault();
-  if (query == null || query == undefined || query == "") {
-    return;
-  } else {
-    $('.search-result-placeholder').load('/?search=' + query);
-    $('.search-result-placeholder').css('border', 'none');
-    $('#ui-id-1').css('display', 'none');
+  inkInput = $("#search").val().replace(/ /g, '+')
+  $.ajax({
+    url: "/search?q=" + inkInput
+  }).done(function(r) {
+    const ink = r.data;
+
+    if (ink)
+      $("#result").html(r.data.ink) && 
+
+      $("#resultloc0").html(r.data.location[0]) && 
+      $("#resultloc1").html(r.data.location[1]) && 
+      $("#resultloc2").html(r.data.location[2]) &&
+      $("#resultloc3").html(r.data.location[3]) &&
+      $("#resultloc4").html(r.data.location[4]) &&
+      $("#resultloc5").html(r.data.location[5]) &&
+      $("#resultloc6").html(r.data.location[6]) &&
+      $("#resultloc7").html(r.data.location[7]) &&
+      $("#resultloc8").html(r.data.location[8]) &&
+      $("#resultloc9").html(r.data.location[9]);
+    else
+      $("#result").html('No match found');
+  }).fail(function(err) {
+    console.error(err); 
+  });;
+});
+
+$(".test").click(function(){
+  console.log($("#resultloc0").html());
+  if ($("#resultloc0").html == ("C312")) {
+    
+    $('input[type="checkbox"]').prop('checked', true);
   }
 });
 

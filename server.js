@@ -40,38 +40,56 @@ var locationArray = [
 ]
 
 //GET SEARCH RESULT OR ALL INKS
-app.get("/", function(req, res){
-  var noMatch = null;
-  if(req.query.search) {
+// app.get("/", function(req, res){
+//   var noMatch = null;
+//   if(req.query.search) {
     
-    ////FUZZY SEARCH////
-    // function escapeRegex(text) {
-    //   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-    // };
-    // const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    ////////////////////
+//     ////FUZZY SEARCH////
+//     // function escapeRegex(text) {
+//     //   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+//     // };
+//     // const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+//     ////////////////////
     
-    // Find one ink from DB
-    Ink.find({ink: req.query.search}, function(err, foundInk){
-      if(err){
-        console.log(err);
-    } else {
-        if(foundInk.length < 1) {
-          noMatch = "No match, please try again.";
-      }
-        res.render('search-results', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
-      }
-    });
-  } else {
-    // Get all inks from DB
-    Ink.find({}, function(err, allInks){
-      if(err){
-          console.log(err);
-      } else {
-        res.render("index", {ink: allInks, locationArray: locationArray, noMatch: noMatch });
-      }
-    });
-  }
+//     // Find one ink from DB
+//     Ink.find({ink: req.query.search}, function(err, foundInk){
+//       if(err){
+//         console.log(err);
+//     } else {
+//         if(foundInk.length < 1) {
+//           noMatch = "No match, please try again.";
+//       }
+//         res.render('search-results', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
+//       }
+//     });
+//   } else {
+//     // Get all inks from DB
+//     Ink.find({}, function(err, allInks){
+//       if(err){
+//           console.log(err);
+//       } else {
+//         res.render("index", {ink: allInks, locationArray: locationArray, noMatch: noMatch });
+//       }
+//     });
+//   }
+// });
+
+app.get('/', (req, res, next) => {
+  Ink.find({}, (err, allInks) => {
+    if (err)
+      return next(err);
+    // console.log('allInks', allInks);
+    res.render('index', { ink: allInks, locationArray: locationArray });
+  });
+});
+
+app.get('/search', (req, res, next) => {
+  Ink.findOne({ ink: req.query.q }, (err, foundInk) => {
+    console.log(foundInk);
+    if (err)
+      return res.status(500).json({ error: err.message });
+    res.json({ data: foundInk });
+  });
 });
 
 //LIST OF STRINGS FOR AUTOCOMPLETE ON SEARCH BOX
