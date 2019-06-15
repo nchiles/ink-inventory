@@ -11,6 +11,10 @@
 //   });
 // });
 
+$( document ).ready(function() {
+  $('#form').css("display","none");
+});
+
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-checkbox").click(function(){
@@ -30,6 +34,8 @@ $(".select-radio").click(function(){
 
 $('#searchform').submit(function(e){
   e.preventDefault();
+
+  $('#form').css("display", "flex");
 
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
@@ -52,7 +58,7 @@ $('#searchform').submit(function(e){
     
     //bucket name
     const ink = r.data;
-    
+
     if (ink) {
       $("#result").html(r.data.ink);
        //current location(s)
