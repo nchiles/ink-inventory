@@ -6,9 +6,18 @@ input:focus {
     outline: none; 
 }
 
+#wrapper {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
 /* NAVBAR */
   .navbar {
     font-size: 22px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 2rem;
     /* background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%); */
     /* border: 1px solid rgba(0, 0, 0, 0.2); */
     padding-bottom: 10px;
@@ -111,7 +120,6 @@ a:hover {
     flex-direction: row;
     justify-content: left;
     align-items: flex-end;
-    margin-bottom: 5px;
 }
 
 #form {
@@ -128,7 +136,6 @@ a:hover {
     border: none;
     border-radius: 25px;
     padding: .5rem 0 .5rem 1rem;
-    margin-top: 6.2rem;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -156,11 +163,36 @@ a:hover {
     min-height: 10rem;
 }
 
+
+.ui-widget.ui-widget-content {
+    border: unset !important;
+    border: 1px solid #aaaaaa;
+    background: #00000087;
+    color: #8e8e8e;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    padding: 3px 1em 3px 1.1em !important;
+}
+
+.ui-menu .ui-menu-item-wrapper:hover  {
+    background: transparent !important;
+    color: white;
+    border: none;
+}
+
+.ui-widget {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px !important;
+}
+
+
 .bucket-name {
     font-size: 4rem;
     text-align: center;
     font-weight: 700;
     color: #ffffff;
+    margin-top: 3rem;
 }
 
 .hidden-results {
@@ -341,7 +373,7 @@ h3 {
 }
 
 .inuse {
-    margin-top: 5rem;
+    margin-top: 3.5rem;
 }
 
 /* #press-col {
