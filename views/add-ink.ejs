@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Vector Ink Inventory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    
+        <div class="row">
+            <div class="header col-xl-12">
+                <a href="/">
+                    <h1 id="home">Vector Ink Inventory</h1>
+                </a>
+            </div>
+        </div>
+
+    <div class="container search-result"> 
+        <form class="form" action="/inventory" method="POST" > 
+            <input type="text" placeholder="Add Ink" name="ink" class="searchbox">
+            <div class="location-selector">
+                <div id="ntmd-button">
+                    <input type="radio" id="select-ntmd" class="select-radio"  />
+                    <label for="select-ntmd"><%= locationArray[0] %></label>
+                </div>
+                
+                <div id="shlf-button">
+                    <input type="radio" id="select-shlf" class="select-radio"  />
+                    <label for="select-shlf"><%= locationArray[1] %></label>
+                </div>
+                
+                <div id="c218-button">
+                    <input type="checkbox" id="select-c218" class="select-checkbox"  />
+                    <label for="select-c218"><%= locationArray[2] %></label>
+                </div>
+            
+                <div id="c312-button">  
+                    <input type="checkbox" id="select-c312" class="select-checkbox"  />
+                    <label for="select-c312"><%= locationArray[3] %></label>
+                </div>
+
+                <div id="c318-button">  
+                    <input type="checkbox" id="select-c318" class="select-checkbox"  />
+                    <label for="select-c318"><%= locationArray[4] %></label>
+                </div>
+
+                <div id="ga18-button">
+                    <input type="checkbox" id="select-ga18" class="select-checkbox"  />
+                    <label for="select-ga18"><%= locationArray[5] %></label>
+                </div>
+
+                <div id="manl-button">
+                    <input type="checkbox" id="select-manl" class="select-checkbox"  />
+                    <label for="select-manl"><%= locationArray[6] %></label>
+                </div>
+
+
+                <div id="smpl-button">
+                    <input type="checkbox" id="select-smpl" class="select-checkbox"  />
+                    <label for="select-smpl"><%= locationArray[7] %></label>
+                </div>
+
+                <div id="sp10-button">
+                    <input type="checkbox" id="select-sp10" class="select-checkbox"  />
+                    <label for="select-sp10"><%= locationArray[8] %></label>
+                </div>
+                    
+                <div id="sp14-button">    
+                    <input type="checkbox" id="select-sp14" class="select-checkbox"  />
+                    <label for="select-sp14"><%= locationArray[9] %></label>
+                </div>
+
+                <button class="submit-location" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>  
+</div>
+<script src="all-inks.js"></script>  
+</body>
+</html>
+
+

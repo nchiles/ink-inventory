@@ -1,14 +1,18 @@
 // autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
+// var xhReq = new XMLHttpRequest();
+// xhReq.open("GET", "/inklist", false);
+// xhReq.send(null);
+// var jsonObject = JSON.parse(xhReq.responseText);
 
-$( function() {
-  var availableInks = jsonObject;
-  $( "#autocompleteInks" ).autocomplete({
-    source: availableInks
-  });
+// $( function() {
+//   var availableInks = jsonObject;
+//   $( "#search" ).autocomplete({
+//     source: availableInks
+//   });
+// });
+
+$( document ).ready(function() {
+  $('#form').css("display","none");
 });
 
 //PRESS CHECKBOX LOGIC
@@ -28,24 +32,94 @@ $(".select-radio").click(function(){
   })
 });
 
-//LOAD SEARCH RESULTS
-$('.searchsubmit').click(function(e){
-  var query = $("#autocompleteInks").val().replace(/ /g, '+')
+//submit search
+$('#searchform').submit(function(e){
   e.preventDefault();
-  if (query == null || query == undefined || query == "") {
-    return;
-  } else {
-    $('.search-result-placeholder').load('/?search=' + query);
-    $('.search-result-placeholder').css('border', 'none');
-    $('.search-result-placeholder').removeClass('container');
-    $('#ui-id-1').css('display', 'none');
-  }
+
+  $('#form').css("display", "flex");
+
+  $("#resultloc0").html(''), 
+  $("#resultloc1").html(''), 
+  $("#resultloc2").html(''),
+  $("#resultloc3").html(''),
+  $("#resultloc4").html(''),
+  $("#resultloc5").html(''),
+  $("#resultloc6").html(''),
+  $("#resultloc7").html(''),
+  $("#resultloc8").html(''),
+  $("#resultloc9").html(''),
+  $('input[type="checkbox"]').prop('checked', false);
+  $('input[type="radio"]').prop('checked', false);
+  
+  inkInput = $("#search").val().replace(/ /g, '+')
+
+  $.ajax({
+    url: "/search?q=" + inkInput
+  }).done(function(r) {
+    
+    //bucket name
+    const ink = r.data;
+
+    if (ink) {
+      $("#result").html(r.data.ink);
+      $("#form").attr('data-id', r.data._id);
+       //current location(s)
+      var locArray = [
+        $("#resultloc0").html(r.data.location[0]).html(), 
+        $("#resultloc1").html(r.data.location[1]).html(), 
+        $("#resultloc2").html(r.data.location[2]).html(),
+        $("#resultloc3").html(r.data.location[3]).html(),
+        $("#resultloc4").html(r.data.location[4]).html(),
+        $("#resultloc5").html(r.data.location[5]).html(),
+        $("#resultloc6").html(r.data.location[6]).html(),
+        $("#resultloc7").html(r.data.location[7]).html(),
+        $("#resultloc8").html(r.data.location[8]).html(),
+        $("#resultloc9").html(r.data.location[9]).html()
+      ]
+  
+      for (var i = 0; i < locArray.length; i++) {     //loop through current locations of ink 
+        if (locArray[i] == 'NTMD') {                  //if locArray is press 
+          $('#select-ntmd').prop('checked', true);    //check checkbox
+        } 
+        if (locArray[i] == 'SHLF') {            
+          $('#select-shlf').prop('checked', true); 
+        } 
+        if (locArray[i] == 'C218') {            
+          $('#select-c218').prop('checked', true); 
+        } 
+        if (locArray[i] == "C312") {           
+          $('#select-c312').prop('checked', true);
+        }
+        if (locArray[i] == "C318") {           
+          $('#select-c318').prop('checked', true);
+        }
+        if (locArray[i] == "GA18") {           
+          $('#select-ga18').prop('checked', true);
+        }
+        if (locArray[i] == "MANL") {           
+          $('#select-manl').prop('checked', true);
+        }
+        if (locArray[i] == "SMPL") {           
+          $('#select-smpl').prop('checked', true);
+        }
+        if (locArray[i] == "SP10") {           
+          $('#select-sp10').prop('checked', true);
+        }
+        if (locArray[i] == "SP14") {           
+          $('#select-sp14').prop('checked', true);
+        }
+      }
+    } else
+      $("#result").html('No match found');
+  }).fail(function(err) {
+    console.error(err); 
+  }); 
 });
 
  //CLEAR SEACHBOX
-$( '.searchform' ).each(function(){
-  this.reset();
-});
+// $( '.searchform' ).each(function(){
+//   this.reset();
+// });
 
 $( function() {
   $( ".sortable" ).sortable({
@@ -53,3 +127,19 @@ $( function() {
   });
   $( ".sortable" ).disableSelection();
 } );
+
+//update location
+$(".update-loc").click(function() {
+  var inkid = $(this).parent().parent().parent().attr('data-id');
+  console.log(inkid);
+  $.ajax({
+    type: "POST",
+    url: '/' + inkid + '?_method=PUT',
+    data: $(this).parent().parent().parent().serialize(),
+    // success: function() {
+    // }
+    success: function() {
+      $('.inuse').load(location.href+" .inuse>*","");
+    }
+  });
+});
