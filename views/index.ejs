@@ -36,7 +36,7 @@
         </form>
 
         <form id="form" value="<%= ink.location %>" data-id="<%= ink._id %>" action="/<%= ink._id %>?_method=PUT" method="POST" > 
-            <div class="bucket-name" id="result"></div>
+            <div class="bucket-name result-id" id="result"></div>
             <span class="hidden-results" id="resultloc0"></span>
             <span class="hidden-results" id="resultloc1"></span>
             <span class="hidden-results" id="resultloc2"></span>
@@ -48,54 +48,54 @@
             <span class="hidden-results" id="resultloc8"></span>
             <span class="hidden-results" id="resultloc9"></span>
             <div class="location-selector">
-                <div id="ntmd-button">
-                    <input type="radio" id="select-ntmd" class="select-radio" name="ink[location]" value="NTMD"/>
+                <div id="ntmd-button" class="location-button">
+                    <input type="radio" id="select-ntmd" class="select-radio update-loc" name="ink[location]" value="NTMD"/>
                     <label for="select-ntmd"><%= locationArray[0] %></label>
                 </div>
                 
-                <div id="shlf-button" class="location-button>
-                    <input type="radio" id="select-shlf" class="select-radio" name="ink[location]" value="SHLF"/>
+                <div id="shlf-button" class="location-button">
+                    <input type="radio" id="select-shlf" class="select-radio update-loc" name="ink[location]" value="SHLF"/>
                     <label for="select-shlf"><%= locationArray[1] %></label>
                 </div>
                 
-                <div id="c218-button" class="location-button>
-                    <input type="checkbox" id="select-c218" class="select-checkbox" name="ink[location]" value="C218"/>
+                <div id="c218-button" class="location-button">
+                    <input type="checkbox" id="select-c218" class="select-checkbox update-loc" name="ink[location]" value="C218"/>
                     <label for="select-c218"><%= locationArray[2] %></label>
                 </div>
             
-                <div id="c312-button" class="location-button>  
-                    <input type="checkbox" id="select-c312" class="select-checkbox" name="ink[location]" value="C312"/>
+                <div id="c312-button" class="location-button">  
+                    <input type="checkbox" id="select-c312" class="select-checkbox update-loc" name="ink[location]" value="C312"/>
                     <label for="select-c312"><%= locationArray[3] %></label>
                 </div>
 
-                <div id="c318-button" class="location-button>  
-                    <input type="checkbox" id="select-c318" class="select-checkbox" name="ink[location]" value="C318"/>
+                <div id="c318-button" class="location-button">  
+                    <input type="checkbox" id="select-c318" class="select-checkbox update-loc" name="ink[location]" value="C318"/>
                     <label for="select-c318"><%= locationArray[4] %></label>
                 </div>
 
-                <div id="ga18-button" class="location-button>
-                    <input type="checkbox" id="select-ga18" class="select-checkbox" name="ink[location]" value="GA18"/>
+                <div id="ga18-button" class="location-button">
+                    <input type="checkbox" id="select-ga18" class="select-checkbox update-loc" name="ink[location]" value="GA18"/>
                     <label for="select-ga18"><%= locationArray[5] %></label>
                 </div>
 
-                <div id="manl-button" class="location-button>
-                    <input type="checkbox" id="select-manl" class="select-checkbox" name="ink[location]" value="MANL"/>
+                <div id="manl-button" class="location-button">
+                    <input type="checkbox" id="select-manl" class="select-checkbox update-loc" name="ink[location]" value="MANL"/>
                     <label for="select-manl"><%= locationArray[6] %></label>
                 </div>
 
 
-                <div id="smpl-button" class="location-button>
-                    <input type="checkbox" id="select-smpl" class="select-checkbox" name="ink[location]" value="SMPL"/>
+                <div id="smpl-button" class="location-button">
+                    <input type="checkbox" id="select-smpl" class="select-checkbox update-loc" name="ink[location]" value="SMPL"/>
                     <label for="select-smpl"><%= locationArray[7] %></label>
                 </div>
 
-                <div id="sp10-button" class="location-button>
-                    <input type="checkbox" id="select-sp10" class="select-checkbox" name="ink[location]" value="SP10"/>
+                <div id="sp10-button" class="location-button">
+                    <input type="checkbox" id="select-sp10" class="select-checkbox update-loc" name="ink[location]" value="SP10"/>
                     <label for="select-sp10"><%= locationArray[8] %></label>
                 </div>
                   
-                <div id="sp14-button" class="location-button>    
-                    <input type="checkbox" id="select-sp14" class="select-checkbox" name="ink[location]" value="SP14"/>
+                <div id="sp14-button" class="location-button">    
+                    <input type="checkbox" id="select-sp14" class="select-checkbox update-loc" name="ink[location]" value="SP14"/>
                     <label for="select-sp14"><%= locationArray[9] %></label>
                 </div>
             </div>
