@@ -3,22 +3,22 @@ $( document ).ready(function() {
 });
 
 
-// autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
+//autocomplete search field
+// var xhReq = new XMLHttpRequest();
+// xhReq.open("GET", "/inklist", false);
+// xhReq.send(null);
+// var jsonObject = JSON.parse(xhReq.responseText);
 
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks,
-    minLength: 2,
-    select: function(event, ui) { 
-      $("#search").val(ui.item.label);
-      $("#searchform").submit(); }
-  });
-});
+// $( function() {
+//   var availableInks = jsonObject;
+//   $( "#search" ).autocomplete({
+//     source: availableInks,
+//     minLength: 2,
+//     select: function(event, ui) { 
+//       $("#search").val(ui.item.label);
+//       $("#searchform").submit(); }
+//   });
+// });
 
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
@@ -126,12 +126,12 @@ $('#searchform').submit(function(e){
 //   this.reset();
 // });
 
-$( function() {
-  $( ".sortable" ).sortable({
-    placeholder: "ui-state-highlight"
-  });
-  $( ".sortable" ).disableSelection();
-} );
+// $( function() {
+//   $( ".sortable" ).sortable({
+//     placeholder: "ui-state-highlight"
+//   });
+//   $( ".sortable" ).disableSelection();
+// } );
 
 //update location
 $(".update-loc").click(function() {
@@ -141,21 +141,22 @@ $(".update-loc").click(function() {
     url: '/' + inkid + '?_method=PUT',
     data: $(this).parent().parent().parent().serialize(),
     success: function() {
-      // $('.inuse').load(location.href+" .inuse>*","");
-    }
+      $(".inuse").load(location.href + " .inuse > * ","");  //PROBLEM
+    } 
   });
 });
 
+
 //unique id for ink in use
-var inkInUse = 0;
-$('.ui-state-default').each(function(){
-  inkInUse++;
-    var newID='ui-state-default' + inkInUse;
-    $(this).attr('id', newID);
-});
+// var inkInUse = 0;
+// $('.ui-state-default').each(function(){
+//   inkInUse++;
+//     var newID='ui-state-default' + inkInUse;
+//     $(this).attr('id', newID);
+// });
 
 //search from inuse
-$(".ui-state-default").click("submit", function(e){
+$(document).on("click", ".ui-state-default", function(e){
 
   e.preventDefault();
 
