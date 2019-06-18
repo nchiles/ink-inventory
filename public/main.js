@@ -136,29 +136,27 @@ $( function() {
 //update location
 $(".update-loc").click(function() {
   var inkid = $(this).parent().parent().parent().attr('data-id');
-  console.log(inkid);
   $.ajax({
     type: "POST",
     url: '/' + inkid + '?_method=PUT',
     data: $(this).parent().parent().parent().serialize(),
-    // success: function() {
-    // }
     success: function() {
-      $('.inuse').load(location.href+" .inuse>*","");
+      // $('.inuse').load(location.href+" .inuse>*","");
     }
   });
 });
 
 //unique id for ink in use
-// var inkInUse = 0;
-// $('.ui-state-default').each(function(){
-//   inkInUse++;
-//     var newID='ui-state-default' + inkInUse;
-//     $(this).attr('id', newID);
-// });
+var inkInUse = 0;
+$('.ui-state-default').each(function(){
+  inkInUse++;
+    var newID='ui-state-default' + inkInUse;
+    $(this).attr('id', newID);
+});
 
 //search from inuse
-$('.ui-state-default').click("submit", function(e){
+$(".ui-state-default").click("submit", function(e){
+
   e.preventDefault();
 
   $('#form').css("display", "flex");
@@ -175,7 +173,7 @@ $('.ui-state-default').click("submit", function(e){
   $("#resultloc9").html(''),
   $('input[type="checkbox"]').prop('checked', false);
   $('input[type="radio"]').prop('checked', false);
-  
+
   inkInput = $(this).html().replace(/ /g, '+')
   // alert(inkInput)
   $.ajax({

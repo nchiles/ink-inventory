@@ -13,29 +13,28 @@
 <body>
 <div class="container">
     <div id="wrapper">
-    <nav class="navbar">
-        <span class="navbar-toggle" id="js-navbar-toggle">
-            <i class="fas fa-bars"></i>
-        </span>
-        <form id="searchform" class="searchform" action="/search" method="GET">
-            <input id="search" class="searchbox" type="text">
-            <input type="submit" class="searchsubmit" value="">
-        </form>
-        <ul class="main-nav" id="js-menu">
-            <li>
-                <a href="/add-ink" class="nav-links">Add Ink</a>
-            </li>
-            <li>
-                <a href="/all-inks" class="nav-links">All Inks</a>
-            </li>
-        </ul>
-    </nav>
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+            <form id="searchform" class="searchform" action="/search" method="GET">
+                <input id="search" class="searchbox" type="text">
+                <input type="submit" class="searchsubmit" value="">
+            </form>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="/add-ink" class="nav-links">Add Ink</a>
+                </li>
+                <li>
+                    <a href="/all-inks" class="nav-links">All Inks</a>
+                </li>
+            </ul>
+        </nav>
 
     <!-- SEARCH INKS -->
-        
-    
         <form id="form" value="<%= ink.location %>" data-id="<%= ink._id %>" action="/<%= ink._id %>?_method=PUT" method="POST" > 
             <div class="bucket-name result-id" id="result"></div>
+            <div class="bucket-name-placeholder"></div>
             <span class="hidden-results" id="resultloc0"></span>
             <span class="hidden-results" id="resultloc1"></span>
             <span class="hidden-results" id="resultloc2"></span>
@@ -101,8 +100,8 @@
         </form> 
     </div>
     <!-- INKS IN USE -->
-    <div class="row inuse">
-        <div id="press-col" class="col c218-col">
+    <div class="inuse">
+        <div id="press-col" class="c218-col">
             <div id="c218-col-header" class="press-header">C218</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -113,7 +112,7 @@
                 <!-- <li><input class="ui-state-default"></li> -->
             </ul>
         </div>
-        <div id="press-col" class="col c312-col">
+        <div id="press-col" class="c312-col">
             <div id="c312-col-header" class="press-header">C312</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -123,7 +122,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div id="press-col" class="col c318-col">
+        <div id="press-col" class="c318-col">
             <div id="c318-col-header" class="press-header">C318</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -133,7 +132,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div id="press-col" class="col ga18-col">
+        <div id="press-col" class="ga18-col">
             <div id="ga18-col-header" class="press-header">GA18</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -143,7 +142,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div id="press-col" class="col manl-col">
+        <div id="press-col" class="manl-col">
             <div id="manl-col-header" class="press-header">MANL</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -153,7 +152,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div id="press-col" class="col smpl-col">
+        <div id="press-col" class="smpl-col">
             <div id="smpl-col-header" class="press-header">SMPL</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -163,7 +162,7 @@
                 <% }) %>
             </ul>      
         </div>
-        <div id="press-col" class="col sp10-col">
+        <div id="press-col" class="sp10-col">
             <div id="sp10-col-header" class="press-header">SP10</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
@@ -173,7 +172,7 @@
                 <% }) %>
             </ul>
         </div>
-        <div id="press-col" class="col sp14-col">
+        <div id="press-col" class="sp14-col">
             <div id="sp14-col-header" class="press-header">SP14</div>
             <ul class="sortable">
                 <% ink.forEach(function(ink) { %>
