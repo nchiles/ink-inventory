@@ -258,16 +258,54 @@ a:hover {
 }
 
 #c218-button input[type=checkbox]:checked + label {
-    background: #7b63d2;
+    background-color: #947BC6; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#947BC6), to(#8269C6));
+    background-image: -webkit-linear-gradient(top, #947BC6, #8269C6);
+    background-image: -moz-linear-gradient(top, #947BC6, #8269C6);
+    background-image: -ms-linear-gradient(top, #947BC6, #8269C6);
+    background-image: -o-linear-gradient(top, #947BC6, #8269C6);
+    background-image: linear-gradient(to bottom, #947BC6, #8269C6);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#947BC6, endColorstr=#8269C6);
+    color: #ffffff;
+}
+
+#c218-button input[type=checkbox]:checked + label:hover {
+    background-color: #856EB3; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#856EB3), to(#6E59A8));
+    background-image: -webkit-linear-gradient(top, #856EB3, #6E59A8);
+    background-image: -moz-linear-gradient(top, #856EB3, #6E59A8);
+    background-image: -ms-linear-gradient(top, #856EB3, #6E59A8);
+    background-image: -o-linear-gradient(top, #856EB3, #6E59A8);
+    background-image: linear-gradient(to bottom, #856EB3, #6E59A8);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#856EB3, endColorstr=#6E59A8);
     color: #ffffff;
 }
 #c218-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #7b63d2;
-    color: #7b63d2;
+    background-color: rgba(148, 123, 198, 0.13);
+    color: rgba(255, 255, 255, 0.144);
 }
 
 #c312-button input[type=checkbox]:checked + label {
-    background: #3d8ce2;
+    background-color: #7B9FD9; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#7B9FD9), to(#668FCC));
+    background-image: -webkit-linear-gradient(top, #7B9FD9, #668FCC);
+    background-image: -moz-linear-gradient(top, #7B9FD9, #668FCC);
+    background-image: -ms-linear-gradient(top, #7B9FD9, #668FCC);
+    background-image: -o-linear-gradient(top, #7B9FD9, #668FCC);
+    background-image: linear-gradient(to bottom, #7B9FD9, #668FCC);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#7B9FD9, endColorstr=#668FCC);
+    color: #ffffff;
+}
+
+#c312-button input[type=checkbox]:checked + label:hover {
+    background-color: #6F9CDE; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6F9CDE), to(#5D83BA));
+    background-image: -webkit-linear-gradient(top, #6F9CDE, #5D83BA);
+    background-image: -moz-linear-gradient(top, #6F9CDE, #5D83BA);
+    background-image: -ms-linear-gradient(top, #6F9CDE, #5D83BA);
+    background-image: -o-linear-gradient(top, #6F9CDE, #5D83BA);
+    background-image: linear-gradient(to bottom, #6F9CDE, #5D83BA);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6F9CDE, endColorstr=#5D83BA);
     color: #ffffff;
 }
 #c312-button input[type=checkbox]:not(:checked) + label:hover {
@@ -276,7 +314,26 @@ a:hover {
 }
 
 #c318-button input[type=checkbox]:checked + label {
-    background: #3cb786;
+    background-color: #76BFA6; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#76BFA6), to(#619D88));
+    background-image: -webkit-linear-gradient(top, #76BFA6, #619D88);
+    background-image: -moz-linear-gradient(top, #76BFA6, #619D88);
+    background-image: -ms-linear-gradient(top, #76BFA6, #619D88);
+    background-image: -o-linear-gradient(top, #76BFA6, #619D88);
+    background-image: linear-gradient(to bottom, #76BFA6, #619D88);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#76BFA6, endColorstr=#619D88);
+    color: #ffffff;
+}
+
+#c318-button input[type=checkbox]:checked + label:hover {
+    background-color: #6EB39B; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6EB39B), to(#588F7C));
+    background-image: -webkit-linear-gradient(top, #6EB39B, #588F7C);
+    background-image: -moz-linear-gradient(top, #6EB39B, #588F7C);
+    background-image: -ms-linear-gradient(top, #6EB39B, #588F7C);
+    background-image: -o-linear-gradient(top, #6EB39B, #588F7C);
+    background-image: linear-gradient(to bottom, #6EB39B, #588F7C);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6EB39B, endColorstr=#588F7C);
     color: #ffffff;
 }
 #c318-button input[type=checkbox]:not(:checked) + label:hover {
