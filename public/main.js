@@ -1,24 +1,23 @@
 $( document ).ready(function() {
-  $('#form').css("display","none");
+  $(".bucket-name-placeholder").html("Search for an ink");
 });
 
-
 //autocomplete search field
-// var xhReq = new XMLHttpRequest();
-// xhReq.open("GET", "/inklist", false);
-// xhReq.send(null);
-// var jsonObject = JSON.parse(xhReq.responseText);
+var xhReq = new XMLHttpRequest();
+xhReq.open("GET", "/inklist", false);
+xhReq.send(null);
+var jsonObject = JSON.parse(xhReq.responseText);
 
-// $( function() {
-//   var availableInks = jsonObject;
-//   $( "#search" ).autocomplete({
-//     source: availableInks,
-//     minLength: 2,
-//     select: function(event, ui) { 
-//       $("#search").val(ui.item.label);
-//       $("#searchform").submit(); }
-//   });
-// });
+$( function() {
+  var availableInks = jsonObject;
+  $( "#search" ).autocomplete({
+    source: availableInks,
+    minLength: 2,
+    select: function(event, ui) { 
+      $("#search").val(ui.item.label);
+      $("#searchform").submit(); }
+  });
+});
 
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
@@ -28,6 +27,11 @@ $(".select-checkbox").click(function(){
     $('input[type="radio"]').prop('checked', false);
   })
 });
+
+// if($(':checkbox').each(function () {
+//   $(this).prop('checked', false);
+//   $('input[type="radio"]').prop('checked', true);
+// }))
 
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-radio").click(function(){
@@ -41,7 +45,7 @@ $(".select-radio").click(function(){
 $('#searchform').submit(function(e){
   e.preventDefault();
 
-  $('#form').css("display", "flex");
+  $(".bucket-name-placeholder").html("");
 
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
@@ -119,13 +123,15 @@ $('#searchform').submit(function(e){
   }).fail(function(err) {
     console.error(err); 
   }); 
+  //CLEAR SEACHBOX
+ $( '.searchform' ).each(function(){
+  this.reset();
+});
 });
 
- //CLEAR SEACHBOX
-// $( '.searchform' ).each(function(){
-//   this.reset();
-// });
 
+
+//JQUERY SORTABLE
 // $( function() {
 //   $( ".sortable" ).sortable({
 //     placeholder: "ui-state-highlight"
@@ -160,7 +166,7 @@ $(document).on("click", ".ui-state-default", function(e){
 
   e.preventDefault();
 
-  $('#form').css("display", "flex");
+  $(".bucket-name-placeholder").html("");
 
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
@@ -239,4 +245,3 @@ $(document).on("click", ".ui-state-default", function(e){
     console.error(err); 
   }); 
 });
-

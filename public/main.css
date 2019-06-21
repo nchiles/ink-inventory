@@ -11,12 +11,13 @@ input:focus {
     position: sticky;
     top: 0;
     z-index: 2;
+    background-color: #000;
 }
 
 /* NAVBAR */
   .navbar {
     font-size: 22px;
-    margin-top: 2rem;
+    top: 2rem;
     padding: 0;
   }
   
@@ -126,7 +127,7 @@ a:hover {
     flex-direction: column;
     padding: .25rem 1.5rem 1.75rem 1rem;
     border-radius: 10px;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
 }
 
 .location-button {
@@ -192,7 +193,14 @@ a:hover {
     font-size: 4rem;
     text-align: center;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
+}
+
+.bucket-name-placeholder {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 700;
+    color: #3a3a3a;
 }
 
 .hidden-results {
@@ -226,134 +234,98 @@ a:hover {
 }
 
 /* start ntmd-button effects */
-#ntmd-button input[type=radio]:checked + label {
+#ntmd-button input[type=radio]:checked + label { 
     background: #494949;
-    color: #ffffff;
+    color: #151515;
 }
 #ntmd-button input[type=radio]:checked + label:hover {
     background: #313131;
-    color: #ffffff;
-}
-#ntmd-button input[type=radio]:checked + label:active {
-    background: #222222;
-    color: #ffffff;
+    color: #000;
 }
 #ntmd-button input[type=radio]:not(:checked) + label:hover {
-    border: 1px solid #494949;
-    color: #313131;
-}
-#ntmd-button input[type=radio]:not(:checked) + label:active {
     border: 1px solid #222222;
     color: #222222;
 }
+#ntmd-button input[type=radio]:not(:checked) + label:active, #ntmd-button input[type=radio]:checked + label:active {
+    background: #222222;
+    color: #000;
+}
 /* end ntmd-button effects */
 
-#shlf-button input[type=radio]:checked + label {
+/* start shlf-button effects */
+#shlf-button input[type=radio]:checked + label { 
     background: #a7a7a7;
-    color: #ffffff;
+    color: #151515;
+}
+#shlf-button input[type=radio]:checked + label:hover {
+    background: #7c7c7c;
+    color: #000;
 }
 #shlf-button input[type=radio]:not(:checked) + label:hover {
-    border: 1px solid #a7a7a7;
-    color: #a7a7a7;
+    border: 1px solid #5c5c5c;
+    color: #5c5c5c;
 }
+#shlf-button input[type=radio]:not(:checked) + label:active, #shlf-button input[type=radio]:checked + label:active {
+    background: #5c5c5c;
+    color: #000;
+}
+/* end shlf-button effects */
 
 #c218-button input[type=checkbox]:checked + label {
     background-color: #947BC6; 
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#947BC6), to(#8269C6));
-    background-image: -webkit-linear-gradient(top, #947BC6, #8269C6);
-    background-image: -moz-linear-gradient(top, #947BC6, #8269C6);
-    background-image: -ms-linear-gradient(top, #947BC6, #8269C6);
-    background-image: -o-linear-gradient(top, #947BC6, #8269C6);
-    background-image: linear-gradient(to bottom, #947BC6, #8269C6);
-    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#947BC6, endColorstr=#8269C6);
-    color: #ffffff;
+    color: #151515;
 }
 
 #c218-button input[type=checkbox]:checked + label:hover {
-    background-color: #856EB3; 
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#856EB3), to(#6E59A8));
-    background-image: -webkit-linear-gradient(top, #856EB3, #6E59A8);
-    background-image: -moz-linear-gradient(top, #856EB3, #6E59A8);
-    background-image: -ms-linear-gradient(top, #856EB3, #6E59A8);
-    background-image: -o-linear-gradient(top, #856EB3, #6E59A8);
-    background-image: linear-gradient(to bottom, #856EB3, #6E59A8);
-    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#856EB3, endColorstr=#6E59A8);
-    color: #ffffff;
+    background-color:#856EB3;
+    color: #151515;
 }
 #c218-button input[type=checkbox]:not(:checked) + label:hover {
-    background-color: rgba(148, 123, 198, 0.13);
-    color: rgba(255, 255, 255, 0.144);
+    border: 1px solid #856EB3;
+    color: #856EB3;
 }
 
 #c312-button input[type=checkbox]:checked + label {
     background-color: #7B9FD9; 
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#7B9FD9), to(#668FCC));
-    background-image: -webkit-linear-gradient(top, #7B9FD9, #668FCC);
-    background-image: -moz-linear-gradient(top, #7B9FD9, #668FCC);
-    background-image: -ms-linear-gradient(top, #7B9FD9, #668FCC);
-    background-image: -o-linear-gradient(top, #7B9FD9, #668FCC);
-    background-image: linear-gradient(to bottom, #7B9FD9, #668FCC);
-    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#7B9FD9, endColorstr=#668FCC);
-    color: #ffffff;
+    color: #151515;
 }
 
 #c312-button input[type=checkbox]:checked + label:hover {
-    background-color: #6F9CDE; 
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#6F9CDE), to(#5D83BA));
-    background-image: -webkit-linear-gradient(top, #6F9CDE, #5D83BA);
-    background-image: -moz-linear-gradient(top, #6F9CDE, #5D83BA);
-    background-image: -ms-linear-gradient(top, #6F9CDE, #5D83BA);
-    background-image: -o-linear-gradient(top, #6F9CDE, #5D83BA);
-    background-image: linear-gradient(to bottom, #6F9CDE, #5D83BA);
-    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6F9CDE, endColorstr=#5D83BA);
-    color: #ffffff;
+    background-color: #5D83BA; 
+    color: #151515;
 }
 #c312-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #3d8ce2;
-    color: #3d8ce2;
+    border: 1px solid #5D83BA;
+    color: #5D83BA;
 }
 
 #c318-button input[type=checkbox]:checked + label {
     background-color: #76BFA6; 
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#76BFA6), to(#619D88));
-    background-image: -webkit-linear-gradient(top, #76BFA6, #619D88);
-    background-image: -moz-linear-gradient(top, #76BFA6, #619D88);
-    background-image: -ms-linear-gradient(top, #76BFA6, #619D88);
-    background-image: -o-linear-gradient(top, #76BFA6, #619D88);
-    background-image: linear-gradient(to bottom, #76BFA6, #619D88);
-    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#76BFA6, endColorstr=#619D88);
-    color: #ffffff;
+    color: #151515;
 }
 
 #c318-button input[type=checkbox]:checked + label:hover {
-    background-color: #6EB39B; 
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#6EB39B), to(#588F7C));
-    background-image: -webkit-linear-gradient(top, #6EB39B, #588F7C);
-    background-image: -moz-linear-gradient(top, #6EB39B, #588F7C);
-    background-image: -ms-linear-gradient(top, #6EB39B, #588F7C);
-    background-image: -o-linear-gradient(top, #6EB39B, #588F7C);
-    background-image: linear-gradient(to bottom, #6EB39B, #588F7C);
-    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6EB39B, endColorstr=#588F7C);
-    color: #ffffff;
+    background-color: #588F7C; 
+    color: #151515;
 }
 #c318-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #3cb786;
-    color: #3cb786;
+    border: 1px solid #588F7C;
+    color: #588F7C;
 }
 
 
 /* start manl-button effects */
 #manl-button input[type=checkbox]:checked + label {
     background: #46aa27;
-    color: #ffffff;
+    color: #151515;
 }
 #manl-button input[type=checkbox]:checked + label:hover {
     background: #589c44;
-    color: #ffffff;
+    color: #151515;
 }
 #manl-button input[type=checkbox]:checked + label:active {
     background: #3a8323;
-    color: #ffffff;
+    color: #151515;
 }
 #manl-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #46aa27;
@@ -368,7 +340,7 @@ a:hover {
 
 #ga18-button input[type=checkbox]:checked + label {
     background: #d4ca53;
-    color: #ffffff;
+    color: #151515;
 }
 #ga18-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #d4ca53;
@@ -377,7 +349,7 @@ a:hover {
 
 #smpl-button input[type=checkbox]:checked + label {
     background: #ef8a38;
-    color: #ffffff;
+    color: #151515;
 }
 #smpl-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #ef8a38;
@@ -386,7 +358,7 @@ a:hover {
 
 #sp10-button input[type=checkbox]:checked + label {
     background: #b9323c;
-    color: #ffffff;
+    color: #151515;
 }
 #sp10-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #b9323c;
@@ -395,7 +367,7 @@ a:hover {
 
 #sp14-button input[type=checkbox]:checked + label {
     background: #bd60ac;
-    color: #ffffff;
+    color: #151515;
 }
 #sp14-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #bd60ac;
@@ -548,6 +520,13 @@ h3 {
 
 .ui-state-default {
     background: transparent !important;
+}
+
+.design-name {
+    background-color: transparent;
+    border: none;
+    max-width: 109px;
+    color: white;
 }
 /* END INKS IN USE SECTION */
 
