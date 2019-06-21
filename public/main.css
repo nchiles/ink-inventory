@@ -6,12 +6,19 @@ input:focus {
     outline: none; 
 }
 
+#wrapper {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #000;
+}
+
 /* NAVBAR */
   .navbar {
     font-size: 22px;
-    /* background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%); */
-    /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    padding-bottom: 10px;
+    top: 2rem;
+    padding: 0;
   }
   
   .main-nav {
@@ -69,9 +76,9 @@ a:hover {
   
     .main-nav {
       display: flex;
-      margin-right: 30px;
       flex-direction: row;
       justify-content: flex-end;
+      align-items: center;
     }
   
     .main-nav li {
@@ -111,13 +118,16 @@ a:hover {
     flex-direction: row;
     justify-content: left;
     align-items: flex-end;
-    margin-bottom: 5px;
 }
 
 #form {
     flex: 10;
     display: flex;
+    background-color: #0d0d0d;
     flex-direction: column;
+    padding: .25rem 1.5rem 1.75rem 1rem;
+    border-radius: 10px;
+    margin-top: 2.5rem;
 }
 
 .location-button {
@@ -127,8 +137,7 @@ a:hover {
 .searchbox {
     border: none;
     border-radius: 25px;
-    padding: .5rem 0 .5rem 1rem;
-    margin-top: 6.2rem;
+    padding: .25rem 0 .25rem 1rem;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -138,7 +147,7 @@ a:hover {
 
 .searchsubmit {
     background: url(assets/search.svg) 0 0 no-repeat;
-    width: 17px; 
+    width: 15px; 
     height: 27px; 
     display: block;
     border: none;
@@ -156,11 +165,42 @@ a:hover {
     min-height: 10rem;
 }
 
+
+.ui-widget.ui-widget-content {
+    border: unset !important;
+    border: 1px solid #aaaaaa;
+    background: #00000087;
+    color: #8e8e8e;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+    padding: 3px 1em 3px 1.1em !important;
+}
+
+.ui-menu .ui-menu-item-wrapper:hover  {
+    background: transparent !important;
+    color: white;
+    border: none;
+}
+
+.ui-widget {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px !important;
+}
+
+
 .bucket-name {
     font-size: 4rem;
     text-align: center;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
+}
+
+.bucket-name-placeholder {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 700;
+    color: #3a3a3a;
 }
 
 .hidden-results {
@@ -194,77 +234,98 @@ a:hover {
 }
 
 /* start ntmd-button effects */
-#ntmd-button input[type=radio]:checked + label {
+#ntmd-button input[type=radio]:checked + label { 
     background: #494949;
-    color: #ffffff;
+    color: #151515;
 }
 #ntmd-button input[type=radio]:checked + label:hover {
     background: #313131;
-    color: #ffffff;
-}
-#ntmd-button input[type=radio]:checked + label:active {
-    background: #222222;
-    color: #ffffff;
+    color: #000;
 }
 #ntmd-button input[type=radio]:not(:checked) + label:hover {
-    border: 1px solid #494949;
-    color: #313131;
-}
-#ntmd-button input[type=radio]:not(:checked) + label:active {
     border: 1px solid #222222;
     color: #222222;
 }
+#ntmd-button input[type=radio]:not(:checked) + label:active, #ntmd-button input[type=radio]:checked + label:active {
+    background: #222222;
+    color: #000;
+}
 /* end ntmd-button effects */
 
-#shlf-button input[type=radio]:checked + label {
+/* start shlf-button effects */
+#shlf-button input[type=radio]:checked + label { 
     background: #a7a7a7;
-    color: #ffffff;
+    color: #151515;
+}
+#shlf-button input[type=radio]:checked + label:hover {
+    background: #7c7c7c;
+    color: #000;
 }
 #shlf-button input[type=radio]:not(:checked) + label:hover {
-    border: 1px solid #a7a7a7;
-    color: #a7a7a7;
+    border: 1px solid #5c5c5c;
+    color: #5c5c5c;
 }
+#shlf-button input[type=radio]:not(:checked) + label:active, #shlf-button input[type=radio]:checked + label:active {
+    background: #5c5c5c;
+    color: #000;
+}
+/* end shlf-button effects */
 
 #c218-button input[type=checkbox]:checked + label {
-    background: #7b63d2;
-    color: #ffffff;
+    background-color: #947BC6; 
+    color: #151515;
+}
+
+#c218-button input[type=checkbox]:checked + label:hover {
+    background-color:#856EB3;
+    color: #151515;
 }
 #c218-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #7b63d2;
-    color: #7b63d2;
+    border: 1px solid #856EB3;
+    color: #856EB3;
 }
 
 #c312-button input[type=checkbox]:checked + label {
-    background: #3d8ce2;
-    color: #ffffff;
+    background-color: #7B9FD9; 
+    color: #151515;
+}
+
+#c312-button input[type=checkbox]:checked + label:hover {
+    background-color: #5D83BA; 
+    color: #151515;
 }
 #c312-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #3d8ce2;
-    color: #3d8ce2;
+    border: 1px solid #5D83BA;
+    color: #5D83BA;
 }
 
 #c318-button input[type=checkbox]:checked + label {
-    background: #3cb786;
-    color: #ffffff;
+    background-color: #76BFA6; 
+    color: #151515;
+}
+
+#c318-button input[type=checkbox]:checked + label:hover {
+    background-color: #588F7C; 
+    color: #151515;
 }
 #c318-button input[type=checkbox]:not(:checked) + label:hover {
-    border: 1px solid #3cb786;
-    color: #3cb786;
+    border: 1px solid #588F7C;
+    color: #588F7C;
 }
 
 
 /* start manl-button effects */
 #manl-button input[type=checkbox]:checked + label {
     background: #46aa27;
-    color: #ffffff;
+    color: #151515;
 }
 #manl-button input[type=checkbox]:checked + label:hover {
     background: #589c44;
-    color: #ffffff;
+    color: #151515;
 }
 #manl-button input[type=checkbox]:checked + label:active {
     background: #3a8323;
-    color: #ffffff;
+    color: #151515;
 }
 #manl-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #46aa27;
@@ -279,7 +340,7 @@ a:hover {
 
 #ga18-button input[type=checkbox]:checked + label {
     background: #d4ca53;
-    color: #ffffff;
+    color: #151515;
 }
 #ga18-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #d4ca53;
@@ -288,7 +349,7 @@ a:hover {
 
 #smpl-button input[type=checkbox]:checked + label {
     background: #ef8a38;
-    color: #ffffff;
+    color: #151515;
 }
 #smpl-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #ef8a38;
@@ -297,7 +358,7 @@ a:hover {
 
 #sp10-button input[type=checkbox]:checked + label {
     background: #b9323c;
-    color: #ffffff;
+    color: #151515;
 }
 #sp10-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #b9323c;
@@ -306,7 +367,7 @@ a:hover {
 
 #sp14-button input[type=checkbox]:checked + label {
     background: #bd60ac;
-    color: #ffffff;
+    color: #151515;
 }
 #sp14-button input[type=checkbox]:not(:checked) + label:hover {
     border: 1px solid #bd60ac;
@@ -341,12 +402,19 @@ h3 {
 }
 
 .inuse {
-    margin-top: 5rem;
+    display: flex;
+    margin-top: 1.5rem;
+    background-color: #0d0d0d;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
-/* #press-col {
-    margin:.25rem;
-} */
+#press-col {
+    flex-grow: 1;
+    justify-content: space-between;
+    width: 100%;
+    margin: 7px;
+}
 
 .press-header {
     font-size: 2rem;
@@ -451,7 +519,14 @@ h3 {
 }
 
 .ui-state-default {
-    background: #000 !important;
+    background: transparent !important;
+}
+
+.design-name {
+    background-color: transparent;
+    border: none;
+    max-width: 109px;
+    color: white;
 }
 /* END INKS IN USE SECTION */
 
