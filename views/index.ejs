@@ -15,7 +15,7 @@
     <div id="wrapper">
         <nav class="navbar">
             <span class="navbar-toggle" id="js-navbar-toggle">
-                <i class="fas fa-bars"></i>
+                <i class="fa fa-bars"></i>
             </span>
             <form id="searchform" class="searchform" action="/search" method="GET">
                 <input id="search" class="searchbox" type="text">
@@ -23,7 +23,20 @@
             </form>
             <ul class="main-nav" id="js-menu">
                 <li>
-                    <a href="/add-ink" class="nav-links">Add Ink</a>
+                    <div class="nav-links dropdown">
+                        <span onclick="myFunction()" class="dropbtn">Add Ink</span>
+                        <div id="myDropdown" class="dropdown-content"> 
+                            <form class="addform" action="/inventory" method="POST" > 
+                                <input type="text" name="ink" class="searchbox addbox">
+                                <button class="plus" type="submit">+</button>
+                            </form>
+                            <%if(typeof error == "undefined"){%>
+                                <h2></h2>
+                            <% } else { %>
+                                 <h1> <%= error %> </h1>
+                            <%}%>
+                        </div>  
+                    </div>
                 </li>
                 <li>
                     <a href="/all-inks" class="nav-links">All Inks</a>
