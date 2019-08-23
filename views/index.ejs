@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
@@ -15,7 +16,7 @@
     <div id="wrapper">
         <nav class="navbar">
             <span class="navbar-toggle" id="js-navbar-toggle">
-                <i class="fas fa-bars"></i>
+                <i class="fa fa-bars"></i>
             </span>
             <form id="searchform" class="searchform" action="/search" method="GET">
                 <input id="search" class="searchbox" type="text">
@@ -23,7 +24,22 @@
             </form>
             <ul class="main-nav" id="js-menu">
                 <li>
-                    <a href="/add-ink" class="nav-links">Add Ink</a>
+                    <!-- <a href="/add-ink" class="nav-links">Add Ink</a> -->
+                    <div class="nav-links dropdown">
+                        <span onclick="myFunction()" class="dropbtn">Add Ink</span>
+                        <div id="myDropdown" class="dropdown-content"> 
+                            <form id="addform" action="/" method="POST" > 
+                                <input type="text" name="ink" class="searchbox" id="inktoadd">
+                                <button class="submit-location" id="addResult" type="submit"><i class="fa fa-plus"></i></button>
+                                <!-- <p id="duplicate"></p> -->
+                            </form>
+                            <!-- <%if(typeof error == "undefined"){%>
+                                <h2></h2>
+                            <% } else { %>
+                                <h1> <%= error %> </h1>
+                            <%}%> -->
+                        </div>  
+                    </div>
                 </li>
                 <li>
                     <a href="/all-inks" class="nav-links">All Inks</a>

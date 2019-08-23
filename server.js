@@ -12,15 +12,17 @@ app.use(methodOverride("_method"))
 
 var port = process.env.PORT || 3000;
 
-// var router = express.Router();  
-
 app.set('view engine', 'ejs')
 
 // mongoose.connect('mongodb://localhost:27017/inkDB', {
+//   useCreateIndex: true,
 //   useNewUrlParser: true
 // })
 
-mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_DB, { 
+  useCreateIndex: true,
+  useNewUrlParser: true 
+});
 
 
 app.listen(port);
@@ -39,41 +41,6 @@ var locationArray = [
     'SP10', 
     'SP14'
 ]
-
-//GET SEARCH RESULT OR ALL INKS
-// app.get("/", function(req, res){
-//   var noMatch = null;
-//   if(req.query.search) {
-    
-//     ////FUZZY SEARCH////
-//     // function escapeRegex(text) {
-//     //   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-//     // };
-//     // const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-//     ////////////////////
-    
-//     // Find one ink from DB
-//     Ink.find({ink: req.query.search}, function(err, foundInk){
-//       if(err){
-//         console.log(err);
-//     } else {
-//         if(foundInk.length < 1) {
-//           noMatch = "No match, please try again.";
-//       }
-//         res.render('search-results', {ink: foundInk, locationArray: locationArray, noMatch: noMatch })
-//       }
-//     });
-//   } else {
-//     // Get all inks from DB
-//     Ink.find({}, function(err, allInks){
-//       if(err){
-//           console.log(err);
-//       } else {
-//         res.render("index", {ink: allInks, locationArray: locationArray, noMatch: noMatch });
-//       }
-//     });
-//   }
-// });
 
 app.get('/', (req, res, next) => {
   Ink.find({}, (err, allInks) => {
@@ -106,25 +73,32 @@ app.get('/inklist', function(req, res){
 
 //ADD INK TO DATABASE
 app.get('/add-ink', function(req, res){
-  res.render("add-ink", {locationArray: locationArray}); 
+  res.render("add-ink"); 
 });
 
-app.post('/inventory', (req, res) => {
+app.post('/add-ink', (req, res) => {
   var ink = req.body.ink
-  var location = req.body.location
 
   var newInk = {
-    ink: ink,
-    location: location
+    ink: ink
   }
 
-  Ink.create(newInk, function(err, result) {
+  Ink.create(newInk, function(err, result, next) {
     if (err) {
-      console.log(err)
+      if (err.name === 'MongoError' && err.code === 11000) {
+        //duplicate ink
+        res.status(422).json({ success: false, error: 'ink already exists' })
+        console.log("duplicate")
+      } else {
+        //other error
+        console.log(err)
+        return res.status(422).send(err);
+      }
     } else {
-      console.log(result);
-    } 
-    res.redirect('/all-inks')
+        console.log(result);
+        res.status(200).json({ message: 'success' });
+        // res.render('add-ink')
+    }
   })
 })
 

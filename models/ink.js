@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 //MONGOOSE MODEL (move this this to models folder later)
 var inkSchema = new Schema({
-  ink: String,
+  ink: { type: String , unique: true, required: true},
   location: [{type: String}]
 });
 
