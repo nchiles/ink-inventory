@@ -3,21 +3,21 @@ $( document ).ready(function() {
 });
 
 //autocomplete search field
-// var xhReq = new XMLHttpRequest();
-// xhReq.open("GET", "/inklist", false);
-// xhReq.send(null);
-// var jsonObject = JSON.parse(xhReq.responseText);
+var xhReq = new XMLHttpRequest();
+xhReq.open("GET", "/inklist", false);
+xhReq.send(null);
+var jsonObject = JSON.parse(xhReq.responseText);
 
-// $( function() {
-//   var availableInks = jsonObject;
-//   $( "#search" ).autocomplete({
-//     source: availableInks,
-//     minLength: 2,
-//     select: function(event, ui) { 
-//       $("#search").val(ui.item.label);
-//       $("#searchform").submit(); }
-//   });
-// });
+$( function() {
+  var availableInks = jsonObject;
+  $( "#search" ).autocomplete({
+    source: availableInks,
+    minLength: 2,
+    select: function(event, ui) { 
+      $("#search").val(ui.item.label);
+      $("#searchform").submit(); }
+  });
+});
 
 //ADD INK DROPDOWN
 /* When the user clicks on the button, 
