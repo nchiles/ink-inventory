@@ -3,21 +3,21 @@ $( document ).ready(function() {
 });
 
 //autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
+// var xhReq = new XMLHttpRequest();
+// xhReq.open("GET", "/inklist", false);
+// xhReq.send(null);
+// var jsonObject = JSON.parse(xhReq.responseText);
 
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks,
-    minLength: 2,
-    select: function(event, ui) { 
-      $("#search").val(ui.item.label);
-      $("#searchform").submit(); }
-  });
-});
+// $( function() {
+//   var availableInks = jsonObject;
+//   $( "#search" ).autocomplete({
+//     source: availableInks,
+//     minLength: 2,
+//     select: function(event, ui) { 
+//       $("#search").val(ui.item.label);
+//       $("#searchform").submit(); }
+//   });
+// });
 
 //ADD INK DROPDOWN
 /* When the user clicks on the button, 
@@ -39,6 +39,34 @@ function myFunction() {
 //     }
 //   }
 // }
+
+//add ink ajax
+$('#addform').on('submit', function(e){
+  e.preventDefault(); 
+
+  ink = $("#inktoadd").val()
+
+  $.ajax({
+    type: "POST",
+    url: 'add-ink',
+    data: {
+      ink: ink,
+    }
+  }).done (function(r) {
+      if (ink) {
+        $("#addResult").html('<i class="fa fa-check"></i>');
+      } else {
+        $("#addResult").html("error");
+      }
+  }).fail(function(err) {
+    console.error(err);
+    $("#addResult").html('<i class="fa fa-times"></i>'); 
+    // $("#duplicate").html("Duplicate Ink"); 
+  });
+  $('#addform').each(function(){
+    this.reset();
+  });
+});
 
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
@@ -145,12 +173,10 @@ $('#searchform').submit(function(e){
     console.error(err); 
   }); 
   //CLEAR SEACHBOX
- $( '.searchform' ).each(function(){
-  this.reset();
+  $( '.searchform' ).each(function(){
+    this.reset();
+  });
 });
-});
-
-
 
 //JQUERY SORTABLE
 // $( function() {
