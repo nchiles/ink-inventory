@@ -2,22 +2,22 @@ $( document ).ready(function() {
   $(".bucket-name-placeholder").html("Search for an ink");
 });
 
-//autocomplete search field
-// var xhReq = new XMLHttpRequest();
-// xhReq.open("GET", "/inklist", false);
-// xhReq.send(null);
-// var jsonObject = JSON.parse(xhReq.responseText);
+// autocomplete search field
+var xhReq = new XMLHttpRequest();
+xhReq.open("GET", "/inklist", false);
+xhReq.send(null);
+var jsonObject = JSON.parse(xhReq.responseText);
 
-// $( function() {
-//   var availableInks = jsonObject;
-//   $( "#search" ).autocomplete({
-//     source: availableInks,
-//     minLength: 2,
-//     select: function(event, ui) { 
-//       $("#search").val(ui.item.label);
-//       $("#searchform").submit(); }
-//   });
-// });
+$( function() {
+  var availableInks = jsonObject;
+  $( "#search" ).autocomplete({
+    source: availableInks,
+    minLength: 2,
+    select: function(event, ui) { 
+      $("#search").val(ui.item.label);
+      $("#searchform").submit(); }
+  });
+});
 
 //ADD INK DROPDOWN
 /* When the user clicks on the button, 
@@ -25,20 +25,6 @@ toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
-
-// Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
 
 //add ink ajax
 $('#addform').on('submit', function(e){

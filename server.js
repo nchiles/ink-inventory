@@ -72,9 +72,9 @@ app.get('/inklist', function(req, res){
 });
 
 //ADD INK TO DATABASE
-app.get('/add-ink', function(req, res){
-  res.render("add-ink"); 
-});
+// app.get('/add-ink', function(req, res){
+//   res.render("add-ink"); 
+// });
 
 app.post('/add-ink', (req, res) => {
   var ink = req.body.ink
