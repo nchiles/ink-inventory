@@ -4,23 +4,45 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Vector Ink Inventory</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/all-inks.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
 <div class="container">
-
-    <div class="row">
-        <div class="header col-xl-12">
-            <a href="/">
-                <h1 id="home">Vector Ink Inventory</h1>
-            </a>
-        </div>
-    </div>
-
+    <div id="wrapper">
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <i class="fa fa-bars"></i>
+            </span>
+            <form id="scrollform" class="searchform">
+                <input id="search" class="searchbox" type="text">
+                <input type="submit" class="searchsubmit" value="">
+            </form>
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <div class="nav-links dropdown">
+                        <span onclick="myFunction()" class="dropbtn">Add Ink</span>
+                        <div id="myDropdown" class="dropdown-content"> 
+                            <form id="addform" action="/" method="POST" > 
+                                <input type="text" name="ink" class="searchbox" id="inktoadd">
+                                <button class="submit-location" id="addResult" type="submit"><i class="fa fa-plus"></i></button>
+                                <!-- <p id="duplicate"></p> -->
+                            </form>
+                        </div>  
+                    </div>
+                </li>
+                <li>
+                    <a href="/all-inks" class="nav-links">All Inks</a>
+                </li>
+            </ul>
+        </nav>
+    </div>  
+    
     <% ink.forEach(function(ink) { %>
         <!-- <form class="dupform" data-id="<%= ink.ink %>" action="/inventory" method="POST"> 
             <input type="hidden"  value="<%= ink.ink %>" class="hidden-ink" name="ink"/>

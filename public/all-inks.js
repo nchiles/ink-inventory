@@ -1,3 +1,52 @@
+//ADD INK DROPDOWN
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+// window.onclick = function(event) {
+//   if (!event.target.matches('.dropbtn')) {
+//     var dropdowns = document.getElementsByClassName("dropdown-content");
+//     var i;
+//     for (i = 0; i < dropdowns.length; i++) {
+//       var openDropdown = dropdowns[i];
+//       if (openDropdown.classList.contains('show')) {
+//         openDropdown.classList.remove('show');
+//       }
+//     }
+//   }
+// }
+
+//add ink ajax
+$('#addform').on('submit', function(e){
+  e.preventDefault(); 
+
+  ink = $("#inktoadd").val()
+
+  $.ajax({
+    type: "POST",
+    url: 'add-ink',
+    data: {
+      ink: ink,
+    }
+  }).done (function(r) {
+      if (ink) {
+        $("#addResult").html('<i class="fa fa-check"></i>');
+      } else {
+        $("#addResult").html("error");
+      }
+  }).fail(function(err) {
+    console.error(err);
+    $("#addResult").html('<i class="fa fa-times"></i>'); 
+    // $("#duplicate").html("Duplicate Ink"); 
+  });
+  $('#addform').each(function(){
+    this.reset();
+  });
+});
+
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-checkbox").click(function(){
@@ -22,12 +71,12 @@ $(".update-form").click(function() {
   });
 });
 
-var dupform = 0;
-$('.dupform').each(function(){
-    dupform++;
-    var newID='dupform' + dupform;
-    $(this).attr('id', newID);
-});
+// var dupform = 0;
+// $('.dupform').each(function(){
+//     dupform++;
+//     var newID='dupform' + dupform;
+//     $(this).attr('id', newID);
+// });
 
 // $(document).on('click','.submit-duplicate',function(e){
 //   e.preventDefault();
@@ -42,10 +91,10 @@ $('.dupform').each(function(){
 //   });
 // });
 
-var form = 0;
+// var form = 0;
 $('.form').each(function(){
-    form++;
-    var newID='form' + form;
+    // form++;
+    var newID = $(this).find(".bucket-name").text();
     $(this).attr('id', newID);
 });
 
