@@ -40,6 +40,34 @@ function myFunction() {
 //   }
 // }
 
+//add ink ajax
+$('#addform').on('submit', function(e){
+  e.preventDefault(); 
+
+  ink = $("#inktoadd").val()
+
+  $.ajax({
+    type: "POST",
+    url: 'add-ink',
+    data: {
+      ink: ink,
+    }
+  }).done (function(r) {
+      if (ink) {
+        $("#addResult").html('<i class="fa fa-check"></i>');
+      } else {
+        $("#addResult").html("error");
+      }
+  }).fail(function(err) {
+    console.error(err);
+    $("#addResult").html('<i class="fa fa-times"></i>'); 
+    // $("#duplicate").html("Duplicate Ink"); 
+  });
+  $('#addform').each(function(){
+    this.reset();
+  });
+});
+
 //PRESS CHECKBOX LOGIC
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-checkbox").click(function(){
@@ -145,12 +173,10 @@ $('#searchform').submit(function(e){
     console.error(err); 
   }); 
   //CLEAR SEACHBOX
- $( '.searchform' ).each(function(){
-  this.reset();
+  $( '.searchform' ).each(function(){
+    this.reset();
+  });
 });
-});
-
-
 
 //JQUERY SORTABLE
 // $( function() {

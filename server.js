@@ -12,19 +12,17 @@ app.use(methodOverride("_method"))
 
 var port = process.env.PORT || 3000;
 
-// var router = express.Router();  
-
 app.set('view engine', 'ejs')
 
-mongoose.connect('mongodb://localhost:27017/inkDB', {
-  useCreateIndex: true,
-  useNewUrlParser: true
-})
-
-// mongoose.connect(process.env.MONGO_DB, { 
+// mongoose.connect('mongodb://localhost:27017/inkDB', {
 //   useCreateIndex: true,
-//   useNewUrlParser: true 
-// });
+//   useNewUrlParser: true
+// })
+
+mongoose.connect(process.env.MONGO_DB, { 
+  useCreateIndex: true,
+  useNewUrlParser: true 
+});
 
 
 app.listen(port);
@@ -74,33 +72,32 @@ app.get('/inklist', function(req, res){
 });
 
 //ADD INK TO DATABASE
-app.get('/add-ink', function(req, res){
-  res.render("add-ink"); 
-});
+// app.get('/add-ink', function(req, res){
+//   res.render("add-ink"); 
+// });
 
-app.post('/inventory', (req, res) => {
+app.post('/add-ink', (req, res) => {
   var ink = req.body.ink
-  var location = req.body.location
 
   var newInk = {
-    ink: ink,
-    location: location
+    ink: ink
   }
 
   Ink.create(newInk, function(err, result, next) {
     if (err) {
       if (err.name === 'MongoError' && err.code === 11000) {
         //duplicate ink
-        res.status(422).render('add-ink', { success: false, error: 'ink already exists' })
+        res.status(422).json({ success: false, error: 'ink already exists' })
         console.log("duplicate")
       } else {
         //other error
-      console.log(err)
-      return res.status(422).send(err);
+        console.log(err)
+        return res.status(422).send(err);
       }
     } else {
-      console.log(result);
-      res.redirect('/all-inks')
+        console.log(result);
+        res.status(200).json({ message: 'success' });
+        // res.render('add-ink')
     }
   })
 })

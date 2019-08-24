@@ -22,19 +22,19 @@
         </div>
 
     <div class=""> 
-        <form class="addform" action="/inventory" method="POST" > 
-            <input type="text" placeholder="Add Ink" name="ink" class="searchbox">
-                <button class="submit-location" type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
-            </div>
+        <form id="addform" action="/add-ink" method="POST" > 
+            <input type="text" placeholder="Add Ink" name="ink" class="searchbox" id="inktoadd">
+            <button class="submit-location" id="addResult" type="submit">+</button>
+            <!-- <p id="duplicate"></p> -->
         </form>
     </div>  
-    <%if(typeof error == "undefined"){%>
+    <!-- <%if(typeof error == "undefined"){%>
         <h2></h2>
     <% } else { %>
          <h1> <%= error %> </h1>
-    <%}%>
+    <%}%> -->
 </div>
-<script src="all-inks.js"></script>  
+<script src="main.js"></script>  
 </body>
 </html>
 
