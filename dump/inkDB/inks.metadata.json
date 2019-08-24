@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"inkDB.inks"}],"uuid":"70536c4b6f2140838f7f6d151df92fba"}
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"inkDB.inks"},{"v":2,"unique":true,"key":{"ink":1},"name":"ink_1","ns":"inkDB.inks","background":true}],"uuid":"70536c4b6f2140838f7f6d151df92fba"}
