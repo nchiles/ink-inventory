@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
+<button onclick="topFunction()" id="scrollTopBtn" title="Go to top"><i class="fa fa-chevron-circle-up"></i></button>
+
 <div class="container">
     <div id="wrapper">
         <nav class="navbar">
@@ -24,6 +26,9 @@
                 <input type="submit" class="searchsubmit" value="">
             </form>
             <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="/" class="nav-links">Home</a>
+                </li>
                 <li>
                     <div class="nav-links dropdown">
                         <span onclick="myFunction()" class="dropbtn">Add Ink</span>
@@ -43,74 +48,72 @@
         </nav>
     </div>  
     
-    <% ink.forEach(function(ink) { %>
-        <!-- <form class="dupform" data-id="<%= ink.ink %>" action="/inventory" method="POST"> 
-            <input type="hidden"  value="<%= ink.ink %>" class="hidden-ink" name="ink"/>
-            <button class="submit-duplicate" type="submit">Duplicate</button>
-        </form> -->
-        <form class="form" value="<%= ink.location %>" data-id="<%= ink._id %>" action="/inventory" method="POST"> 
-            <div class="bucket-name"><%= ink.ink %></div>
+    <div class="container">
+        <% ink.forEach(function(ink) { %>
+            <form class="form" value="<%= ink.location %>" data-id="<%= ink._id %>" action="/inventory" method="POST"> 
+                <div class="bucket-name"><%= ink.ink %></div>
 
-            <div class="location-selector">
-                <div class="offpress-container">
-                    <div id="ntmd-button">
-                        <input type="radio" class="update-form select-radio select-ntmd-input" name="ink[location]" value="NTMD" <%= ink.location == 'NTMD' ? 'checked' : ''%> />
-                        <label class="select-ntmd-label"><%= locationArray[0] %></label>
-                    </div>
-                    
-                    <div id="shlf-button">
-                        <input type="radio" class="update-form select-radio select-shlf-input" name="ink[location]" value="SHLF" <%= ink.location == 'SHLF' ? 'checked' : ''%> />
-                        <label class="select-shlf-label"><%= locationArray[1] %></label>
-                    </div>
-                </div>
-            
-                <div class="onpress-container">
-                    <div id="c218-button">
-                        <input type="checkbox" class="update-form select-checkbox select-c218-input" name="ink[location]" value="C218" <%= ink.location.includes('C218') ? 'checked' : ''%> />
-                        <label class="select-c218-label"><%= locationArray[2] %></label>
+                <div class="location-selector">
+                    <div class="offpress-container">
+                        <div id="ntmd-button">
+                            <input type="radio" class="update-form select-radio select-ntmd-input" name="ink[location]" value="NTMD" <%= ink.location == 'NTMD' ? 'checked' : ''%> />
+                            <label class="select-ntmd-label"><%= locationArray[0] %></label>
+                        </div>
+                        
+                        <div id="shlf-button">
+                            <input type="radio" class="update-form select-radio select-shlf-input" name="ink[location]" value="SHLF" <%= ink.location == 'SHLF' ? 'checked' : ''%> />
+                            <label class="select-shlf-label"><%= locationArray[1] %></label>
+                        </div>
                     </div>
                 
-                    <div id="c312-button">  
-                        <input type="checkbox" class="update-form select-checkbox select-c312-input" name="ink[location]" value="C312" <%= ink.location.includes('C312') ? 'checked' : ''%> />
-                        <label class="select-c312-label"><%= locationArray[3] %></label>
-                    </div>
-
-                    <div id="c318-button">  
-                        <input type="checkbox" class="update-form select-checkbox select-c318-input" name="ink[location]" value="C318" <%= ink.location.includes('C318') ? 'checked' : ''%> />
-                        <label class="select-c318-label"><%= locationArray[4] %></label>
-                    </div>
-
-                    <div id="ga18-button">
-                        <input type="checkbox" class="update-form select-checkbox select-ga18-input" name="ink[location]" value="GA18" <%= ink.location.includes('GA18') ? 'checked' : ''%> />
-                        <label class="select-ga18-label"><%= locationArray[5] %></label>
-                    </div>
-
-                    <div id="manl-button">
-                        <input type="checkbox" class="update-form select-checkbox select-manl-input" name="ink[location]" value="MANL" <%= ink.location.includes('MANL') ? 'checked' : ''%> />
-                        <label class="select-manl-label"><%= locationArray[6] %></label>
-                    </div>
-
-                    <div id="smpl-button">
-                        <input type="checkbox" class="update-form select-checkbox select-smpl-input" name="ink[location]" value="SMPL" <%= ink.location.includes('SMPL') ? 'checked' : ''%> />
-                        <label class="select-smpl-label"><%= locationArray[7] %></label>
-                    </div>
-
-                    <div id="sp10-button">
-                        <input type="checkbox" class="update-form select-checkbox select-sp10-input" name="ink[location]" value="SP10" <%= ink.location.includes('SP10') ? 'checked' : ''%> />
-                        <label class="select-sp10-label"><%= locationArray[8] %></label>
-                    </div>
+                    <div class="onpress-container">
+                        <div id="c218-button">
+                            <input type="checkbox" class="update-form select-checkbox select-c218-input" name="ink[location]" value="C218" <%= ink.location.includes('C218') ? 'checked' : ''%> />
+                            <label class="select-c218-label"><%= locationArray[2] %></label>
+                        </div>
                     
-                    <div id="sp14-button">    
-                        <input type="checkbox" class="update-form select-checkbox select-sp14-input" name="ink[location]" value="SP14" <%= ink.location.includes('SP14') ? 'checked' : ''%> />
-                        <label class="select-sp14-label"><%= locationArray[9] %></label>
-                    </div>
-                </div>
+                        <div id="c312-button">  
+                            <input type="checkbox" class="update-form select-checkbox select-c312-input" name="ink[location]" value="C312" <%= ink.location.includes('C312') ? 'checked' : ''%> />
+                            <label class="select-c312-label"><%= locationArray[3] %></label>
+                        </div>
 
-                <!-- <button class="submit-location" type="submit">Submit</button> -->
-                <a class="delete" href="delete/<%= ink.id %>" role="button" >DELETE</a>
-            </div>
-        </form>
-    <% }) %>
+                        <div id="c318-button">  
+                            <input type="checkbox" class="update-form select-checkbox select-c318-input" name="ink[location]" value="C318" <%= ink.location.includes('C318') ? 'checked' : ''%> />
+                            <label class="select-c318-label"><%= locationArray[4] %></label>
+                        </div>
+
+                        <div id="ga18-button">
+                            <input type="checkbox" class="update-form select-checkbox select-ga18-input" name="ink[location]" value="GA18" <%= ink.location.includes('GA18') ? 'checked' : ''%> />
+                            <label class="select-ga18-label"><%= locationArray[5] %></label>
+                        </div>
+
+                        <div id="manl-button">
+                            <input type="checkbox" class="update-form select-checkbox select-manl-input" name="ink[location]" value="MANL" <%= ink.location.includes('MANL') ? 'checked' : ''%> />
+                            <label class="select-manl-label"><%= locationArray[6] %></label>
+                        </div>
+
+                        <div id="smpl-button">
+                            <input type="checkbox" class="update-form select-checkbox select-smpl-input" name="ink[location]" value="SMPL" <%= ink.location.includes('SMPL') ? 'checked' : ''%> />
+                            <label class="select-smpl-label"><%= locationArray[7] %></label>
+                        </div>
+
+                        <div id="sp10-button">
+                            <input type="checkbox" class="update-form select-checkbox select-sp10-input" name="ink[location]" value="SP10" <%= ink.location.includes('SP10') ? 'checked' : ''%> />
+                            <label class="select-sp10-label"><%= locationArray[8] %></label>
+                        </div>
+                        
+                        <div id="sp14-button">    
+                            <input type="checkbox" class="update-form select-checkbox select-sp14-input" name="ink[location]" value="SP14" <%= ink.location.includes('SP14') ? 'checked' : ''%> />
+                            <label class="select-sp14-label"><%= locationArray[9] %></label>
+                        </div>
+                    </div>
+
+                    <!-- <button class="submit-location" type="submit">Submit</button> -->
+                    <a class="delete" href="delete/<%= ink.id %>" role="button" >DELETE</a>
+                </div>
+            </form>
+        <% }) %>
+    </div>
 </div>
 <script src="all-inks.js"></script>  
 </body>
