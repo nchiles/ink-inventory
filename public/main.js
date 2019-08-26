@@ -24,6 +24,7 @@ $( function() {
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
+  $("#backgroundDim").css("display", "block");
 }
 
 // Close the dropdown menu if the user clicks outside of it
