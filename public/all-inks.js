@@ -1,3 +1,12 @@
+var $loading = $('#loadingDiv, #backgroundDim').hide();
+$(document)
+  .ajaxStart(function () {
+    $loading.show();
+  })
+  .ajaxStop(function () {
+    $loading.hide();
+  });
+
 //SCROLL TO TOP BUTTON
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
