@@ -7,6 +7,23 @@ $(document)
     $loading.hide();
   });
 
+//autocomplete search field
+var xhReq = new XMLHttpRequest();
+xhReq.open("GET", "/inklist", false);
+xhReq.send(null);
+var jsonObject = JSON.parse(xhReq.responseText);
+
+$( function() {
+  var availableInks = jsonObject;
+  $( "#search" ).autocomplete({
+    source: availableInks,
+    minLength: 2,
+    select: function(event, ui) { 
+      $("#search").val(ui.item.label);
+      $("#searchform").submit(); }
+  });
+});
+
 //SCROLL TO TOP BUTTON
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
@@ -19,11 +36,9 @@ function scrollFunction() {
   }
 }
 
-// When the user clicks on the button, scroll to the top of the document
+// SCROLLTOP
 function topFunction() {
   $("html, body").animate({ scrollTop: 0 })
-  // document.body.scrollTop = 0;
-  // document.documentElement.scrollTop = 0;
 }
 
 //SEARCH-SCROLL TO INK
@@ -54,7 +69,12 @@ function myFunction() {
 //   }
 // }
 
-//add ink ajax
+//HAMBURGER
+function navbarDrop() {
+  $('.main-nav').toggleClass("mobileNav");
+}
+
+//ADD INK
 $('#addform').on('submit', function(e){
   e.preventDefault(); 
 

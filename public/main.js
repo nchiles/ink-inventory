@@ -19,9 +19,13 @@ $( function() {
   });
 });
 
+//HAMBURGER
+function navbarDrop() {
+  $('.main-nav').toggleClass("mobileNav");
+}
+
 //ADD INK DROPDOWN
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
   $("#backgroundDim").css("display", "block");

@@ -24,45 +24,52 @@ input:focus {
 }
 
 /* NAVBAR */
-  .navbar {
+.navbar {
     font-size: 22px;
     top: 2rem;
     padding: 0;
     margin-bottom: 5rem;
-  }
-  
-  .main-nav {
+}
+
+.main-nav {
     list-style-type: none;
     display: none;
-  }
-  
-  .nav-links,
-  .logo {
+}
+
+.nav-links,
+.logo {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
-  }
+}
 
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
     display: none;
     position: absolute;
     left: -100px;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-  }
+}
 
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-  .show {
-      display:block;
-    }
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
+}
+
+.mobileNav {
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
 
 #addResult {
     border: none;
