@@ -115,18 +115,18 @@ app.put('/:id', function(req, res){
 });
 
 //DELETE INK
-app.get('/delete/:id', function(req, res){
-  Ink.deleteOne({_id: req.params.id}, function(err){
-    if(err) {
-      console.log(err);
-      res.json(err);
-    } 
-    else {
-      console.log("Ink Deleted")
-    }
-    res.redirect("/all-inks");
-  });
-});	  
+// app.get('/delete/:id', function(req, res){
+//   Ink.deleteOne({_id: req.params.id}, function(err){
+//     if(err) {
+//       console.log(err);
+//       res.json(err);
+//     } 
+//     else {
+//       console.log("Ink Deleted")
+//     }
+//     res.redirect("/all-inks");
+//   });
+// });	  
 
 //GET ALL INKS IN DATABASE
 app.get("/all-inks", function(req, res){

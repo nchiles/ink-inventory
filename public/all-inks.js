@@ -8,21 +8,21 @@ $(document)
   });
 
 //autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
+// var xhReq = new XMLHttpRequest();
+// xhReq.open("GET", "/inklist", false);
+// xhReq.send(null);
+// var jsonObject = JSON.parse(xhReq.responseText);
 
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks,
-    minLength: 2,
-    select: function(event, ui) { 
-      $("#search").val(ui.item.label);
-      $("#searchform").submit(); }
-  });
-});
+// $( function() {
+//   var availableInks = jsonObject;
+//   $( "#search" ).autocomplete({
+//     source: availableInks,
+//     minLength: 2,
+//     select: function(event, ui) { 
+//       $("#search").val(ui.item.label);
+//       $("#searchform").submit(); }
+//   });
+// });
 
 //SCROLL TO TOP BUTTON
 // When the user scrolls down 20px from the top of the document, show the button
@@ -41,7 +41,7 @@ function topFunction() {
   $("html, body").animate({ scrollTop: 0 })
 }
 
-//SEARCH-SCROLL TO INK
+//SEARCH AND SCROLL TO INK
 $('#scrollform').on('submit', function(e){  
   e.preventDefault(); 
   var ink = '#' + $('#search').val();
