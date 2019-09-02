@@ -180,6 +180,10 @@ a:hover {
     .nav-links:hover {
       color: rgba(255, 255, 255, 1);
     }
+
+    .bucket-name-placeholder {
+        font-size: 2rem;
+    }
   }
 
 /* START SEARCH RESULTS SECTION */
@@ -471,16 +475,22 @@ h3 {
 
 .inuse {
     display: flex;
-    margin-top: 1.5rem;
-    background-color: #0d0d0d;
-    padding: 1rem;
-    border-radius: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
+
 
 #press-col {
     flex-grow: 1;
     justify-content: space-between;
     width: 100%;
+    margin: 7px;
+}
+
+#press-col {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     margin: 7px;
 }
 
