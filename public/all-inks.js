@@ -1,3 +1,4 @@
+//Dim background and show loading animation on page load
 var $loading = $('#loadingDiv, #backgroundDim').hide();
 $(document)
   .ajaxStart(function () {
@@ -7,25 +8,26 @@ $(document)
     $loading.hide();
   });
 
-//autocomplete search field
-// var xhReq = new XMLHttpRequest();
-// xhReq.open("GET", "/inklist", false);
-// xhReq.send(null);
-// var jsonObject = JSON.parse(xhReq.responseText);
 
-// $( function() {
-//   var availableInks = jsonObject;
-//   $( "#search" ).autocomplete({
-//     source: availableInks,
-//     minLength: 2,
-//     select: function(event, ui) { 
-//       $("#search").val(ui.item.label);
-//       $("#searchform").submit(); }
-//   });
-// });
+//Autocomplete search field
+var xhReq = new XMLHttpRequest();
+xhReq.open("GET", "/inklist", false);
+xhReq.send(null);
+var jsonObject = JSON.parse(xhReq.responseText);
 
-//SCROLL TO TOP BUTTON
-// When the user scrolls down 20px from the top of the document, show the button
+$( function() {
+  var availableInks = jsonObject;
+  $( "#search" ).autocomplete({
+    source: availableInks,
+    minLength: 2,
+    select: function(event, ui) { 
+      $("#search").val(ui.item.label);
+      $("#searchform").submit(); }
+  });
+});
+
+
+//Sroll top - when the user scrolls down 20px, show button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -36,20 +38,20 @@ function scrollFunction() {
   }
 }
 
-// SCROLLTOP
 function topFunction() {
   $("html, body").animate({ scrollTop: 0 })
 }
 
-//SEARCH AND SCROLL TO INK
+
+//Search and go to ink
 $('#scrollform').on('submit', function(e){  
   e.preventDefault(); 
-  var ink = '#' + $('#search').val();
+  var ink = '#' + $('#search').val().split(' ').join('_');
   window.scrollTo(0, $(ink).offset().top - $(window).height()/10);
 });
 
-//ADD INK DROPDOWN
-/* When the user clicks on the button,toggle between hiding and showing the dropdown content */
+
+//Add Ink dropdown
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
   $("#inktoadd").focus();
@@ -69,12 +71,14 @@ function myFunction() {
 //   }
 // }
 
-//HAMBURGER
+
+//Hamburger
 function navbarDrop() {
   $('.main-nav').toggleClass("mobileNav");
 }
 
-//ADD INK
+
+//Add Ink ajax
 $('#addform').on('submit', function(e){
   e.preventDefault(); 
 
@@ -95,14 +99,14 @@ $('#addform').on('submit', function(e){
   }).fail(function(err) {
     console.error(err);
     $("#addResult").html('<i class="fa fa-times"></i>'); 
-    // $("#duplicate").html("Duplicate Ink"); 
   });
   $('#addform').each(function(){
     this.reset();
   });
 });
 
-//PRESS CHECKBOX LOGIC
+
+//Press checkbox button logic
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-checkbox").click(function(){
   $(this).prop('checked');
@@ -115,6 +119,7 @@ $(".select-radio").click(function(){
   $(this).parent().parent().siblings().children().children('input[type="checkbox"]').prop('checked', false);
 });
 
+//update location of ink by clicking checkbox
 $(".update-form").click(function() {
   var inkid = $(this).parent().parent().parent().parent().attr('data-id');
   $.ajax({
@@ -126,33 +131,15 @@ $(".update-form").click(function() {
   });
 });
 
-// var dupform = 0;
-// $('.dupform').each(function(){
-//     dupform++;
-//     var newID='dupform' + dupform;
-//     $(this).attr('id', newID);
-// });
 
-// $(document).on('click','.submit-duplicate',function(e){
-//   e.preventDefault();
-//   $.ajax({
-//     type: 'POST',
-//     dataType : 'html',
-//     url: $(this).parent().attr('action'),
-//     data: $(this).parent().serialize(),
-//     success: function (data) {
-//         alert('ok');
-//     }
-//   });
-// });
-
-// var form = 0;
-$('.form').each(function(){
-    // form++;
-    var newID = $(this).find(".bucket-name").text();
+//Give each ink form a unique ID from the bucket-name text (used when searching for an ink)
+$('.allInksForms').each(function(){
+    var newID = $(this).find(".bucket-name").text().split(' ').join('_');
     $(this).attr('id', newID);
 });
 
+
+//Give each input a unique ID - (used when changing location of ink)
 var a = 0;
 $('.select-ntmd-input').each(function(){
     a++;
@@ -224,7 +211,7 @@ $('.select-sp14-input').each(function(){
 });
 
 
-
+//Give each label a unique ID - (used when changing location of ink)
 var aa = 0;
 $('.select-ntmd-label').each(function(){
     aa++;

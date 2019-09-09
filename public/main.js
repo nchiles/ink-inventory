@@ -1,8 +1,10 @@
-$( document ).ready(function() {
+//Placeholder for main form on page load
+$(document).ready(function() {
   $(".bucket-name-placeholder").html("Search for an ink");
 });
 
-//autocomplete search field
+
+//Autocomplete search field
 var xhReq = new XMLHttpRequest();
 xhReq.open("GET", "/inklist", false);
 xhReq.send(null);
@@ -19,7 +21,8 @@ $( function() {
   });
 });
 
-//HAMBURGER
+
+//Hamburger
 function navbarDrop() {
   $('.main-nav').toggleClass("mobileNav");
 }
