@@ -1,5 +1,8 @@
-body {
+body, 
+html {
   background: #000;
+  height: 100%;
+  max-height: 100%;
 }
 
 input:focus {
@@ -19,7 +22,6 @@ input:focus {
   font-size: 22px;
   top: 2rem;
   padding: 0 0 75px 0;
-  margin-bottom: 2rem;
 }
 
 .main-nav {
@@ -413,15 +415,32 @@ label {
 /* ENDSEARCH RESULTS SECTION */
 
 /* START INKS IN USE SECTION */
-h3 {
-  margin-top: 2rem;
+.inuseSection {
+  margin-top: 30px;
+}
+/* .inuse {
+  height: 100%;
+  max-height: 100%;
+} */
+
+.inuse,
+.content {
+  display: flex;
 }
 
 .inuse {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 4rem;
+  flex-direction: column;
+}
+
+.content,
+.content div {
+  flex: 1;
+}
+
+/* remove scrollbar on windows */
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 #press-col {
@@ -429,12 +448,20 @@ h3 {
   flex-direction: column;
   flex-grow: 1;
   margin: 7px;
+  background: rgb(13,13,13);
+  background: linear-gradient(180deg, rgba(13,13,13,1) 30%, rgba(0,0,0,0) 100%);
+  border-radius: 10px;
 }
 
 .press-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
   font-size: 2rem;
-  text-align: center;
   font-weight: 600;
+  /* background: #0d0d0d; */
 }
 
 #c218-col-header {
@@ -457,10 +484,6 @@ h3 {
 
 #c318-col-header {
   font-weight: 600;
-  color: #3cb786;
-}
-
-#c318-col-header {
   color: #3cb786;
 }
 
@@ -515,13 +538,24 @@ h3 {
 
 .sortable {
   list-style-type: none;
-  margin: 0;
   padding: 0;
   cursor: pointer;
+  height: 300px;
+  overflow: auto;
+  border-radius: 10px;
+  mask-image: -webkit-gradient(linear, left 85%, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));  
+  -webkit-mask-image: -webkit-gradient(linear, left 85%, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));  
+}
+
+.sortableFade {
+  mask-image: none;  
+  -webkit-mask-image: none;  
 }
 
 .sortable li {
-  margin: 0 0 5px 0;
+  margin: 5px;
   padding: 5px;
   border-radius: 0.35rem;
   text-align: center;

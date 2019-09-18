@@ -195,14 +195,33 @@ $('#searchform').submit(function(e){
 // } );
 
 //update location
-$(".update-loc").click(function() {
-  var inkid = $(this).parent().parent().parent().attr('data-id');
+$("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FORM
+  var inkid = $(this).parent().parent().parent().attr('data-id'); //GET DATA ID OF FORM
   $.ajax({
     type: "POST",
     url: '/' + inkid + '?_method=PUT',
     data: $(this).parent().parent().parent().serialize(),
     success: function() {
-      $(".inuse").load(location.href + " .inuse > * ","");  //PROBLEM
+      $(".inuse").load(location.href + " .inuse > * ","", function(){
+        $(".sortable").scroll(function() {
+          let scroll = $(this).scrollTop();
+          let opacity = 1 - (scroll / 500);
+          if (opacity > 0) {
+            $(this).siblings('.press-header').css('opacity', opacity);
+      
+            if (opacity < 0.2) {
+              $(this).siblings('.press-header').css('opacity', '0.15');
+            }
+          }
+        });
+        $('.sortable').on('scroll', function() {
+          if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            $(this).addClass('sortableFade');
+          } else {
+            $(this).removeClass('sortableFade');
+          }
+        })  
+      });  //PROBLEM
     } 
   });
 });
@@ -300,3 +319,28 @@ $(document).on("click", ".ui-state-default", function(e){
     console.error(err); 
   }); 
 });
+
+//Inuse Inks Animations
+$(document).ready(function scrollAnimations() {
+  $(".sortable").scroll(function() {
+    let scroll = $(this).scrollTop();
+    let opacity = 1 - (scroll / 500);
+    if (opacity > 0) {
+      $(this).siblings('.press-header').css('opacity', opacity);
+
+      if (opacity < 0.2) {
+        $(this).siblings('.press-header').css('opacity', '0.15');
+      }
+    }
+  });
+  $('.sortable').on('scroll', function() {
+    if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+      $(this).addClass('sortableFade');
+    } else {
+      $(this).removeClass('sortableFade');
+    }
+  })  
+});
+
+
+
