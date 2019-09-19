@@ -202,26 +202,26 @@ $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FO
     url: '/' + inkid + '?_method=PUT',
     data: $(this).parent().parent().parent().serialize(),
     success: function() {
-      $(".inuse").load(location.href + " .inuse > * ","", function(){
-        $(".sortable").scroll(function() {
-          let scroll = $(this).scrollTop();
-          let opacity = 1 - (scroll / 500);
-          if (opacity > 0) {
-            $(this).siblings('.press-header').css('opacity', opacity);
-      
-            if (opacity < 0.2) {
-              $(this).siblings('.press-header').css('opacity', '0.15');
-            }
+      $(".sortable").scroll(function() {
+        let scroll = $(this).scrollTop();
+        let opacity = 1 - (scroll / 500);
+        if (opacity > 0) {
+          $(this).siblings('.press-header').css('opacity', opacity);
+    
+          if (opacity < 0.2) {
+            $(this).siblings('.press-header').css('opacity', '0.15');
           }
-        });
-        $('.sortable').on('scroll', function() {
-          if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            $(this).addClass('sortableFade');
-          } else {
-            $(this).removeClass('sortableFade');
-          }
-        })  
-      });  //PROBLEM
+        }
+      });
+      $('.sortable').on('scroll', function() {
+        let bottom = $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
+        if (bottom) {
+          $(this).addClass('sortableFade');
+          $(this).siblings('.press-header').css('opacity', '0.15');
+        } else {
+          $(this).removeClass('sortableFade');
+        }
+      })    //PROBLEM
     } 
   });
 });
@@ -334,8 +334,10 @@ $(document).ready(function scrollAnimations() {
     }
   });
   $('.sortable').on('scroll', function() {
-    if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+    let bottom = $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
+    if (bottom) {
       $(this).addClass('sortableFade');
+      $(this).siblings('.press-header').css('opacity', '0.15');
     } else {
       $(this).removeClass('sortableFade');
     }
