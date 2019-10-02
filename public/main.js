@@ -3,13 +3,14 @@ $(document).ready(function() {
   $(".bucket-name-placeholder").html("Search for an ink");
 });
 
-
-//Autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
-
+$.getJSON("/inklist")
+  .done(function(data){
+    console.log(data);
+  })
+  .fail(function(){
+    console.log("error getting inklist");
+  })
+  
 $( function() {
   var availableInks = jsonObject;
   $( "#search" ).autocomplete({
