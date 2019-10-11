@@ -1,26 +1,32 @@
 //Placeholder for main form on page load
 $(document).ready(function() {
   $(".bucket-name-placeholder").html("Search for an ink");
+  $("#search").focus();
 });
 
+
+//Autocomplete search field
 $.getJSON("/inklist")
   .done(function(data){
-    console.log(data);
+    $( function() {
+      $( "#search" ).autocomplete({
+        source: data,
+        minLength: 2,
+        select: function(ui) { 
+          $("#search").val(ui.item.label);
+          $("#searchform").submit();
+          $("#searchform").each(function(){
+            this.reset();
+          });
+        }
+      });
+    });
   })
   .fail(function(){
     console.log("error getting inklist");
   })
   
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks,
-    minLength: 2,
-    select: function(event, ui) { 
-      $("#search").val(ui.item.label);
-      $("#searchform").submit(); }
-  });
-});
+
 
 
 //Hamburger
@@ -29,25 +35,35 @@ function navbarDrop() {
 }
 
 //ADD INK DROPDOWN
-/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+/* Toggle dropdown searchbox*/
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
-  $("#backgroundDim").css("display", "block");
+  $("#inktoadd").focus();
+  event.stopPropagation();
 }
+// Hide searchbox when user clicks anywhere but searchbox
+$(document).click(function(event){
+  if (!$(event.target).is('.searchbox, .fa, .submit-location')) {
+    $(".dropdown-content").removeClass("show");
+  }
+});
 
-// Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
+//reset submit 
+// $(".searchbox, .dropbtn").click(function(){
+//   $("#addResult").html('<i class="fa fa-plus"></i>')
+// });
+
+
+var callback = function() {
+  $("#addResult").html('<i class="fa fa-plus"></i>')
+};
+
+$("input").keypress(function() {
+  callback();
+});
+
+$('.searchbox, .dropbtn').click(callback);
+
 
 //add ink ajax
 $('#addform').on('submit', function(e){
@@ -70,7 +86,6 @@ $('#addform').on('submit', function(e){
   }).fail(function(err) {
     console.error(err);
     $("#addResult").html('<i class="fa fa-times"></i>'); 
-    // $("#duplicate").html("Duplicate Ink"); 
   });
   $('#addform').each(function(){
     this.reset();
@@ -181,8 +196,9 @@ $('#searchform').submit(function(e){
   }).fail(function(err) {
     console.error(err); 
   }); 
+  $("#search").autocomplete( "close" );
   //CLEAR SEACHBOX
-  $( '.searchform' ).each(function(){
+  $("#searchform").each(function(){
     this.reset();
   });
 });
