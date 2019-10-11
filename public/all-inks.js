@@ -8,23 +8,26 @@ $(document)
     $loading.hide();
   });
 
-
 //Autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
-
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks,
-    minLength: 2,
-    select: function(event, ui) { 
-      $("#search").val(ui.item.label);
-      $("#searchform").submit(); }
-  });
-});
+$.getJSON("/inklist")
+  .done(function(data){
+    $( function() {
+      $( "#search" ).autocomplete({
+        source: data,
+        minLength: 2,
+        select: function(ui) { 
+          $("#search").val(ui.item.label);
+          $("#searchform").submit();
+          $("#searchform").each(function(){
+            this.reset();
+          });
+        }
+      });
+    });
+  })
+  .fail(function(){
+    console.log("error getting inklist");
+  })
 
 
 //Sroll top - when the user scrolls down 20px, show button
@@ -58,18 +61,18 @@ function myFunction() {
 }
 
 // Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
+window.onclick = function(event) {
+  if (!event.target.matches('#addform')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 
 //Hamburger

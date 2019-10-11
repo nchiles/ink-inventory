@@ -1,26 +1,29 @@
 //Placeholder for main form on page load
 $(document).ready(function() {
-  $(".bucket-name-placeholder").html("Search for an ink");
+  $("#search").focus();
 });
 
 
 //Autocomplete search field
-var xhReq = new XMLHttpRequest();
-xhReq.open("GET", "/inklist", false);
-xhReq.send(null);
-var jsonObject = JSON.parse(xhReq.responseText);
-
-$( function() {
-  var availableInks = jsonObject;
-  $( "#search" ).autocomplete({
-    source: availableInks,
-    minLength: 2,
-    select: function(event, ui) { 
-      $("#search").val(ui.item.label);
-      $("#searchform").submit(); }
-  });
-});
-
+$.getJSON("/inklist")
+  .done(function(data){
+    $( function() {
+      $( "#search" ).autocomplete({
+        source: data,
+        minLength: 2,
+        select: function(event, ui) { 
+          $("#search").val(ui.item.label);
+          $("#searchform").submit();
+          $("#searchform").each(function(){
+            this.reset();
+          });
+        }
+      });
+    });
+  })
+  .fail(function(){
+    console.log("error getting inklist");
+  })
 
 //Hamburger
 function navbarDrop() {
@@ -28,25 +31,28 @@ function navbarDrop() {
 }
 
 //ADD INK DROPDOWN
-/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+/* Toggle dropdown searchbox*/
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
-  $("#backgroundDim").css("display", "block");
+  $("#inktoadd").focus();
+  event.stopPropagation();
 }
+// Hide searchbox when user clicks anywhere but searchbox
+$(document).click(function(event){
+  if (!$(event.target).is('.searchbox, .fa, .submit-location')) {
+    $(".dropdown-content").removeClass("show");
+  }
+});
 
-// Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(event) {
-//   if (!event.target.matches('.dropbtn')) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
+//Reset submit icons in Add Ink dropdown
+var callback = function() {
+  $("#addResult").html('<i class="fa fa-plus"></i>')
+};
+$("input").keypress(function() {
+  callback();
+});
+$('.searchbox, .dropbtn').click(callback);
+
 
 //add ink ajax
 $('#addform').on('submit', function(e){
@@ -69,7 +75,6 @@ $('#addform').on('submit', function(e){
   }).fail(function(err) {
     console.error(err);
     $("#addResult").html('<i class="fa fa-times"></i>'); 
-    // $("#duplicate").html("Duplicate Ink"); 
   });
   $('#addform').each(function(){
     this.reset();
@@ -85,11 +90,6 @@ $(".select-checkbox").click(function(){
   })
 });
 
-// if($(':checkbox').each(function () {
-//   $(this).prop('checked', false);
-//   $('input[type="radio"]').prop('checked', true);
-// }))
-
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-radio").click(function(){
   $(':checkbox').each(function () {
@@ -98,12 +98,10 @@ $(".select-radio").click(function(){
   })
 });
 
-//submit search
+//Submit search
 $('#searchform').submit(function(e){
   e.preventDefault();
-
-  $(".bucket-name-placeholder").html("");
-
+  $("#result").removeClass("bucket-name-placeholder");
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
   $("#resultloc2").html(''),
@@ -180,8 +178,9 @@ $('#searchform').submit(function(e){
   }).fail(function(err) {
     console.error(err); 
   }); 
+  $("#search").autocomplete( "close" );
   //CLEAR SEACHBOX
-  $( '.searchform' ).each(function(){
+  $("#searchform").each(function(){
     this.reset();
   });
 });
@@ -194,6 +193,18 @@ $('#searchform').submit(function(e){
 //   $( ".sortable" ).disableSelection();
 // } );
 
+$(".update-loc").click(function() {
+  var inkid = $(this).parent().parent().parent().attr('data-id');
+  $.ajax({
+    type: "POST",
+    url: '/' + inkid + '?_method=PUT',
+    data: $(this).parent().parent().parent().serialize(),
+    success: function() {
+      
+    } 
+  });
+});
+
 //update location
 $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FORM
   var inkid = $(this).parent().parent().parent().attr('data-id'); //GET DATA ID OF FORM
@@ -202,29 +213,31 @@ $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FO
     url: '/' + inkid + '?_method=PUT',
     data: $(this).parent().parent().parent().serialize(),
     success: function() {
-      $(".sortable").scroll(function() {
-        let scroll = $(this).scrollTop();
-        let opacity = 1 - (scroll / 500);
-        if (opacity > 0) {
-          $(this).siblings('.press-header').css('opacity', opacity);
-    
-          if (opacity < 0.2) {
-            $(this).siblings('.press-header').css('opacity', '0.15');
-          }
-        }
-      });
-      $('.sortable').on('scroll', function() {
-        let bottom = $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
-        if (bottom) {
-          $(this).addClass('sortableFade');
-          $(this).siblings('.press-header').css('opacity', '0.15');
-        } else {
-          $(this).removeClass('sortableFade');
-        }
-      })    //PROBLEM
+      $(".inuse").load(location.href + " .inuse > * ","");  //PROBLEM
     } 
   });
 });
+
+$(".sortable").scroll(function() {
+  let scroll = $(this).scrollTop();
+  let opacity = 1 - (scroll / 500);
+  if (opacity > 0) {
+    $(this).siblings('.press-header').css('opacity', opacity);
+
+    if (opacity < 0.2) {
+      $(this).siblings('.press-header').css('opacity', '0.15');
+    }
+  }
+});
+$('.sortable').on('scroll', function() {
+  let bottom = $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
+  if (bottom) {
+    $(this).addClass('sortableFade');
+    $(this).siblings('.press-header').css('opacity', '0.15');
+  } else {
+    $(this).removeClass('sortableFade');
+  }
+})
 
 
 //unique id for ink in use
@@ -239,8 +252,6 @@ $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FO
 $(document).on("click", ".ui-state-default", function(e){
 
   e.preventDefault();
-
-  $(".bucket-name-placeholder").html("");
 
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
