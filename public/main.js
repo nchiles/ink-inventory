@@ -12,7 +12,7 @@ $.getJSON("/inklist")
       $( "#search" ).autocomplete({
         source: data,
         minLength: 2,
-        select: function(ui) { 
+        select: function(event, ui) { 
           $("#search").val(ui.item.label);
           $("#searchform").submit();
           $("#searchform").each(function(){
@@ -25,9 +25,6 @@ $.getJSON("/inklist")
   .fail(function(){
     console.log("error getting inklist");
   })
-  
-
-
 
 //Hamburger
 function navbarDrop() {
@@ -48,20 +45,13 @@ $(document).click(function(event){
   }
 });
 
-//reset submit 
-// $(".searchbox, .dropbtn").click(function(){
-//   $("#addResult").html('<i class="fa fa-plus"></i>')
-// });
-
-
+//Reset submit icons in Add Ink dropdown
 var callback = function() {
   $("#addResult").html('<i class="fa fa-plus"></i>')
 };
-
 $("input").keypress(function() {
   callback();
 });
-
 $('.searchbox, .dropbtn').click(callback);
 
 
@@ -101,11 +91,6 @@ $(".select-checkbox").click(function(){
   })
 });
 
-// if($(':checkbox').each(function () {
-//   $(this).prop('checked', false);
-//   $('input[type="radio"]').prop('checked', true);
-// }))
-
 //uncheck press checkbox if ntmd/shlf radio button checked
 $(".select-radio").click(function(){
   $(':checkbox').each(function () {
@@ -114,11 +99,9 @@ $(".select-radio").click(function(){
   })
 });
 
-//submit search
+//Submit search
 $('#searchform').submit(function(e){
   e.preventDefault();
-
-  $(".bucket-name-placeholder").html("");
 
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
