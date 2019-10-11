@@ -1,6 +1,5 @@
 //Placeholder for main form on page load
 $(document).ready(function() {
-  $(".bucket-name-placeholder").html("Search for an ink");
   $("#search").focus();
 });
 
@@ -194,6 +193,18 @@ $('#searchform').submit(function(e){
 //   $( ".sortable" ).disableSelection();
 // } );
 
+$(".update-loc").click(function() {
+  var inkid = $(this).parent().parent().parent().attr('data-id');
+  $.ajax({
+    type: "POST",
+    url: '/' + inkid + '?_method=PUT',
+    data: $(this).parent().parent().parent().serialize(),
+    success: function() {
+      
+    } 
+  });
+});
+
 //update location
 $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FORM
   var inkid = $(this).parent().parent().parent().attr('data-id'); //GET DATA ID OF FORM
@@ -202,29 +213,31 @@ $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FO
     url: '/' + inkid + '?_method=PUT',
     data: $(this).parent().parent().parent().serialize(),
     success: function() {
-      $(".sortable").scroll(function() {
-        let scroll = $(this).scrollTop();
-        let opacity = 1 - (scroll / 500);
-        if (opacity > 0) {
-          $(this).siblings('.press-header').css('opacity', opacity);
-    
-          if (opacity < 0.2) {
-            $(this).siblings('.press-header').css('opacity', '0.15');
-          }
-        }
-      });
-      $('.sortable').on('scroll', function() {
-        let bottom = $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
-        if (bottom) {
-          $(this).addClass('sortableFade');
-          $(this).siblings('.press-header').css('opacity', '0.15');
-        } else {
-          $(this).removeClass('sortableFade');
-        }
-      })    //PROBLEM
+      $(".inuse").load(location.href + " .inuse > * ","");  //PROBLEM
     } 
   });
 });
+
+$(".sortable").scroll(function() {
+  let scroll = $(this).scrollTop();
+  let opacity = 1 - (scroll / 500);
+  if (opacity > 0) {
+    $(this).siblings('.press-header').css('opacity', opacity);
+
+    if (opacity < 0.2) {
+      $(this).siblings('.press-header').css('opacity', '0.15');
+    }
+  }
+});
+$('.sortable').on('scroll', function() {
+  let bottom = $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight
+  if (bottom) {
+    $(this).addClass('sortableFade');
+    $(this).siblings('.press-header').css('opacity', '0.15');
+  } else {
+    $(this).removeClass('sortableFade');
+  }
+})
 
 
 //unique id for ink in use
@@ -239,8 +252,6 @@ $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FO
 $(document).on("click", ".ui-state-default", function(e){
 
   e.preventDefault();
-
-  $(".bucket-name-placeholder").html("");
 
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
