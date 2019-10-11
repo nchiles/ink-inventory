@@ -101,7 +101,7 @@ $(".select-radio").click(function(){
 //Submit search
 $('#searchform').submit(function(e){
   e.preventDefault();
-
+  $("#result").removeClass("bucket-name-placeholder");
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
   $("#resultloc2").html(''),
