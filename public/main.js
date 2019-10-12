@@ -193,18 +193,6 @@ $('#searchform').submit(function(e){
 //   $( ".sortable" ).disableSelection();
 // } );
 
-$(".update-loc").click(function() {
-  var inkid = $(this).parent().parent().parent().attr('data-id');
-  $.ajax({
-    type: "POST",
-    url: '/' + inkid + '?_method=PUT',
-    data: $(this).parent().parent().parent().serialize(),
-    success: function() {
-      
-    } 
-  });
-});
-
 //update location
 $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FORM
   var inkid = $(this).parent().parent().parent().attr('data-id'); //GET DATA ID OF FORM
@@ -218,6 +206,7 @@ $("body").on('click', '.update-loc', function() { //CLICK PRESS NAME FROM TOP FO
   });
 });
 
+// inuse scroll animations
 $(".sortable").scroll(function() {
   let scroll = $(this).scrollTop();
   let opacity = 1 - (scroll / 500);
@@ -252,7 +241,7 @@ $('.sortable').on('scroll', function() {
 $(document).on("click", ".ui-state-default", function(e){
 
   e.preventDefault();
-
+  $("#result").removeClass("bucket-name-placeholder");
   $("#resultloc0").html(''), 
   $("#resultloc1").html(''), 
   $("#resultloc2").html(''),
