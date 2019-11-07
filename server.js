@@ -1,5 +1,3 @@
-require('newrelic');
-
 const express = require('express');
 const app = express();
 const bodyParser= require('body-parser');
@@ -30,6 +28,10 @@ mongoose.connect(process.env.MONGO_DB, {
 app.listen(port);
 console.log('Server running on port ' + port);
 
+var http = require("http");
+setInterval(function() {
+    http.get("http://blvhbakqqtktto.vectorprepress.com/");
+}, 300000); // every 5 minutes 
 
 var locationArray = [
     'NTMD',
