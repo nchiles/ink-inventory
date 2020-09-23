@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "author": "",
@@ -15,8 +16,7 @@
     "express": "^4.16.4",
     "method-override": "^3.0.0",
     "mongodb": "^3.1.13",
-    "mongoose": "^5.4.16",
-    "newrelic": "^6.1.0"
+    "mongoose": "^5.4.16"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
