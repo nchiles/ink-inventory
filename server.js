@@ -30,7 +30,7 @@ console.log('Server running on port ' + port);
 
 var http = require("http");
 setInterval(function() {
-    http.get("https://ink-inventory.herokuapp.com");
+    http.get("http://ink-inventory.herokuapp.com");
 }, 300000); // every 5 minutes 
 
 var locationArray = [
