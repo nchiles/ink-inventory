@@ -19,10 +19,9 @@ app.set('view engine', 'ejs')
 //   useNewUrlParser: true
 // })
 
-mongoose.connect(process.env.MONGO_DB, { 
-  useCreateIndex: true,
-  useNewUrlParser: true 
-});
+// Mongoose 6 removed useCreateIndex/useNewUrlParser (they're now defaults and
+// passing them throws), so connect with no options.
+mongoose.connect(process.env.MONGO_DB);
 
 
 app.listen(port);
@@ -89,7 +88,7 @@ app.post('/add-ink', (req, res) => {
 
   Ink.create(newInk, function(err, result, next) {
     if (err) {
-      if (err.name === 'MongoError' && err.code === 11000) {
+      if (err.code === 11000) {
         //duplicate ink
         res.status(422).json({ success: false, error: 'ink already exists' })
         console.log("duplicate")
